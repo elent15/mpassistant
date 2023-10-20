@@ -1,0 +1,57 @@
+@mixin burger {
+  display: none;
+
+  @media (max-width: 780px) {
+    position: relative;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-shrink: 0;
+    width: 30px;
+    height: 25px;
+    outline: 1px solid transparent;
+    outline-offset: 1px;
+    transition: outline-color 0.3s ease-in-out;
+
+    &:focus {
+      outline-color: var(--primary);
+    }
+
+    &--active {
+
+      & .burger__line:first-child {
+        position: absolute;
+        top: 45%;
+        transform: rotate(45deg);
+        transform-origin: center;
+        transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+      }
+
+      & .burger__line:last-child {
+        position: absolute;
+        top: 45%;
+        width: 100%;
+        transform: rotate(-45deg);
+        transform-origin: center;
+        transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+      }
+
+      & .burger__line:nth-child(2) {
+        transform: scale(0);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+
+    &__line {
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(91deg, var(--primary-gradient) 5.69%, var(--secondary) 169.72%), var(--black);
+
+      &:nth-child(3) {
+        width: 50%;
+      }
+    }
+  }
+}

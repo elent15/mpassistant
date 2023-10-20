@@ -1,0 +1,287 @@
+.footer {
+  padding-top: 60px;
+  padding-bottom: 40px;
+
+  &__container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @media (max-width:1050px) {
+      flex-wrap: nowrap;
+      flex-direction: column;
+    }
+  }
+
+  &__top {
+    order: 1;
+    margin-right: 60px;
+    width: 260px;
+
+    @media (max-width:540px) {
+      margin-right: 0;
+    }
+  }
+
+  &__top-logo {
+    margin-bottom: 5px;
+  }
+
+  &__top-subtitle {
+    margin-bottom: 41px;
+
+    @media (max-width:540px) {
+      margin-bottom: 29px;
+    }
+  }
+
+  &__top-social {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 251px;
+    margin-bottom: 40px;
+
+    @media (max-width:540px) {
+      margin-bottom: 32px;
+      width: 187px;
+    }
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    outline: 1px solid transparent;
+    outline-offset: 1px;
+    overflow: hidden;
+    transition: outline-color 0.3s ease-in-out;
+
+    @media (max-width:540px) {
+      width: 52px;
+      height: 52px;
+    }
+
+    &:focus {
+      outline-color: var(--secondary);
+    }
+
+    &:hover {
+      outline-color: transparent;
+    }
+  }
+
+  &__vk {
+    background-image: url(../images/svg/vk.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__tg {
+    background-image: url(../images/svg/tg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__youtube {
+    background-image: url(../images/svg/youtube.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__nav {
+    order: 2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 49px;
+    width: min(66%, 1056px);
+
+    @media (max-width:1050px) {
+      width: 100%;
+    }
+
+    @media (max-width:780px) {
+      flex-wrap: wrap;
+    }
+
+    @media (max-width:540px) {
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__nav-clients {
+    width: 281px;
+
+    @media (max-width:540px) {
+      width: 150px;
+    }
+  }
+
+  &__documents {
+    width: 370px;
+
+    @media (max-width:540px) {
+      width: 100%;
+    }
+  }
+
+  &__nav-title {
+    margin-bottom: 19px;
+
+    @media (max-width:540px) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__nav-item {
+    &:not(:last-child) {
+      margin-bottom: 17px;
+    }
+  }
+
+  &__nav-link {
+    font-size: clamp(1.125rem, 1.066rem + 0.26vw, 1.375rem);
+    line-height: 125%;
+    letter-spacing: 0.44px;
+    color: var(--md-dark);
+    transition: color 0.3s ease-in-out;
+
+    @media (max-width:540px) {
+      letter-spacing: 0.36px;
+    }
+
+    &:focus {
+      color: var(--primary);
+      outline: none;
+    }
+
+    &:hover {
+      color: var(--primary-gradient);
+    }
+  }
+
+  &__bottom {
+    order: 3;
+    margin-right: auto;
+    max-width: 490px;
+    font-size: clamp(1rem, 0.941rem + 0.26vw, 1.25rem);
+    line-height: 125%;
+    letter-spacing: 0.4px;
+    color: var(--md-dark);
+    transform: translateY(-53px);
+
+    @media (max-width:1050px) {
+      order: 5;
+      margin-right: 0;
+      max-width: 100%;
+      transform: none;
+    }
+  }
+
+  &__bottom-copy {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  &__bottom-info {
+    width: 421px;
+  }
+
+  &__payment-list {
+    order: 4;
+    display: flex;
+    align-items: center;
+    width: 500px;
+
+    @media (max-width:1050px) {
+      transform: translateY(-20px);
+    }
+
+    @media (max-width:540px) {
+      flex-wrap: wrap;
+      margin-bottom: 27px;
+      width: 100%;
+      transform: none;
+    }
+  }
+
+  &__payment-item {
+
+    @media (max-width:540px) {
+      margin-bottom: 5px;
+    }
+
+    &:not(:last-child) {
+      margin-right: 26px;
+
+      @media (max-width:540px) {
+        margin-right: 16px;
+      }
+    }
+
+    &:first-child {
+      margin-right: 17px;
+
+      @media (max-width:540px) {
+        margin-right: 13px;
+      }
+    }
+  }
+
+  &__payment-modulbank {
+    width: 156px;
+    height: 42px;
+
+    @media (max-width:540px) {
+      width: 122px;
+      height: 36px;
+    }
+  }
+
+  &__payment-visa {
+    width: 73px;
+    height: 30px;
+
+    @media (max-width:540px) {
+      width: 63px;
+      height: 26px;
+    }
+  }
+
+  &__payment-master-card {
+    width: 49px;
+    height: 30px;
+
+    @media (max-width:540px) {
+      width: 42px;
+      height: 26px;
+    }
+  }
+
+  &__payment-maestro {
+    width: 49px;
+    height: 30px;
+
+    @media (max-width:540px) {
+      width: 42px;
+      height: 26px;
+    }
+  }
+
+  &__payment-mir {
+    width: 79px;
+    height: 22px;
+
+    @media (max-width:540px) {
+      width: 68px;
+      height: 18px;
+    }
+  }
+}

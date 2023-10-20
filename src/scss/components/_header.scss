@@ -1,0 +1,203 @@
+.header {
+  position: relative;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 31px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    @media (max-width:780px) {
+      padding-top: 20px;
+      padding-bottom: 20px;
+
+      &--active {
+        padding-left: clamp(1.25rem, -5.179rem + 28.57vw, 8.75rem);
+        padding-right: clamp(1.25rem, -5.179rem + 28.57vw, 8.75rem);
+      }
+    }
+
+    @media (max-width:540px) {
+      gap: 15px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+  &__logo {
+    @media (max-width:780px) {
+      position: relative;
+      z-index: 50;
+      width: 187px;
+    }
+  }
+
+  &__about-subtitle {
+    flex-shrink: 0;
+
+    @media (max-width:1250px) {
+      display: none;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 31px;
+    margin-left: auto;
+    width: clamp(42.438rem, 10.765rem + 40.51vw, 59.375rem);
+
+    @media (max-width:1050px) {
+      width: 60%;
+    }
+
+    @media (max-width:780px) {
+      width: auto;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &--active {
+      @media (max-width:780px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        flex-direction: column;
+        gap: 15px;
+        padding: 65px clamp(1.25rem, -5.179rem + 28.57vw, 8.75rem) 50px;
+        width: 100%;
+        min-height: 100vh;
+        background-color: var(--ligth-secondary);
+        transform: translateX(0);
+
+        & .header__nav-list {
+          display: flex;
+        }
+
+        & .header__btns {
+          flex-direction: column-reverse;
+          align-items: initial;
+          width: 100%;
+          transform: translateX(0);
+        }
+
+        & .header__btn-registration {
+          display: block;
+          align-self: center;
+          margin-bottom: 36px;
+        }
+
+        & .account {
+          display: inline-block;
+        }
+
+        & .btn-entrance {
+          width: auto;
+        }
+
+        & .entrance {
+          @media (max-width:540px) {
+            display: inline-block;
+          }
+        }
+
+        & .burger-deco {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    max-width: 377px;
+    width: 100%;
+
+    @media (max-width:780px) {
+      display: none;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 25px;
+      margin: auto 0;
+      max-width: 100%;
+    }
+  }
+
+  &__nav-link {
+    font-size: 18px;
+    line-height: 125%;
+    color: var(--dark);
+    transition: color 0.3s ease-in-out;
+
+    @media (max-width:780px) {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 115%;
+      letter-spacing: 0.48px;
+    }
+
+    &:focus {
+      color: var(--primary);
+      outline: none;
+    }
+
+    &:hover {
+      color: var(--primary-gradient);
+    }
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 355px;
+
+    @media (max-width:1050px) {
+      width: 79px;
+    }
+
+    @media (max-width:780px) {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    @media (max-width:540px) {
+      width: auto;
+    }
+  }
+
+  &__btn-registration {
+    width: 257px;
+
+    @media (max-width:1050px) {
+      display: none;
+    }
+  }
+}
+
+.burger {
+  @include burger;
+}
+
+.burger-deco {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  display: none;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+}
+
+.burger-deco-img {
+  width: 100%;
+  height: 100%;
+}

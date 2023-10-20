@@ -1,0 +1,191 @@
+.reviews {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @media (max-width:780px) {
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+
+  &__swiper-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+    @media (max-width:540px) {
+      margin-bottom: 21px;
+    }
+  }
+
+  &__arrow-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 130px;
+    height: 48px;
+
+    @media (max-width:540px) {
+      display: none;
+    }
+  }
+
+  &__card {
+    position: relative;
+    border-radius: 10px;
+    padding: 50px 50px;
+    height: 445px;
+    background: linear-gradient(0deg, var(--ligth-secondary) 0%, var(--ligth-secondary) 100%), var(--secondary);
+    overflow: hidden;
+
+    @media (max-width:1050px) {
+      padding: 40px 30px;
+    }
+
+    @media (max-width:780px) {
+      padding: 50px;
+    }
+
+    @media (max-width:540px) {
+      padding: 35px 21px;
+      height: 424px;
+    }
+  }
+
+  &__card-deco {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 223px;
+    height: 144px;
+    fill: var(--ligth-ghost-white);
+
+    @media (max-width:1050px) {
+      top: 25px;
+      left: 30px;
+      width: 150px;
+      height: auto;
+    }
+
+    @media (max-width:540px) {
+      top: -14px;
+      left: 11px;
+      width: 112px;
+    }
+  }
+
+  &__card-text {
+    position: relative;
+    height: 185px;
+    font-size: clamp(0.938rem, 0.836rem + 0.45vw, 1.375rem);
+
+    &--open {
+      height: 250px;
+      overflow-y: auto;
+    }
+  }
+
+  &__card-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: 45px 50px;
+    width: 100%;
+    height: 261px;
+    background: linear-gradient(180deg, rgba(234, 243, 253, 0.00) 0%, var(--ligth-secondary) 50.52%);
+
+    @media (max-width:540px) {
+      padding: 34px 20px;
+      height: 240px;
+    }
+
+    &--close {
+      padding-top: 0px;
+      height: 130px;
+      background: transparent;
+    }
+  }
+
+  &__btn {
+    display: none;
+
+    &--active {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      width: clamp(11.875rem, 11.25rem + 3.13vw, 15rem);
+      font-size: clamp(1.125rem, 1.037rem + 0.39vw, 1.5rem);
+      line-height: 125%;
+      letter-spacing: 0.44px;
+      color: var(--primary);
+      outline: 1px solid transparent;
+      outline-offset: 5px;
+      transition: outline-color 0.3s ease-in-out;
+
+      @media (max-width:540px) {
+        margin-bottom: 18px;
+        letter-spacing: 0.36px;
+      }
+
+      &:focus {
+        outline-color: var(--primary);
+      }
+
+      &:hover {
+        outline-color: transparent;
+      }
+    }
+
+    &--open {
+      & .reviews__check-mark {
+        margin-top: 4px;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__check-mark {
+    fill: var(--primary);
+    width: 12px;
+    height: 12px;
+    transform: translateY(2px);
+  }
+
+  &__card-author {
+    position: relative;
+    padding-left: 27px;
+    font-size: clamp(1.125rem, 1.00rem + 0.53vw, 1.625rem);
+    line-height: 125%;
+    letter-spacing: 0.52px;
+    color: var(--dark);
+
+    @media (max-width:540px) {
+      padding-left: 20px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 19px;
+      height: 2px;
+      transform: translateY(1px);
+      background-color: var(--dark);
+
+      @media (max-width:540px) {
+        width: 13px;
+      }
+    }
+  }
+}
+
+.reviews-swiper {
+  @include swiper;
+}

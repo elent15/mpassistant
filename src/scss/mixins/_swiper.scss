@@ -1,0 +1,72 @@
+@mixin swiper {
+
+  .reviews-swiper-wrapper {
+    @media (max-width:540px) {
+      margin-bottom: 7px;
+    }
+  }
+
+  .swiper-pagination {
+    display: none;
+
+    @media (max-width:540px) {
+      display: block;
+      position: static;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    @media (max-width:540px) {
+      width: 6px;
+      height: 6px;
+      background: var(--secondary);
+      opacity: 0.5;
+
+      &-active {
+        opacity: 1;
+      }
+
+      &:focus-visible {
+        outline: 1px solid var(--secondary);
+      }
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: static;
+    margin: 0;
+    width: 48px;
+    height: 48px;
+    outline: 1px solid transparent;
+    transform: translateX(-1px);
+    transition: outline-color 0.3s ease-in-out;
+
+    &::after {
+      display: none;
+    }
+
+    &:focus {
+      outline-color: var(--primary);
+    }
+
+    &:hover {
+      outline-color: transparent;
+    }
+  }
+
+  .swiper-button-prev {
+    background-image: url(../images/svg/arrow-next.svg);
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(180deg);
+  }
+
+  .swiper-button-next {
+    background-image: url(../images/svg/arrow-next.svg);
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}

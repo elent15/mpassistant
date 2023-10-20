@@ -1,0 +1,120 @@
+.reports {
+  padding-top: 21px;
+  padding-bottom: 21px;
+
+  @media (max-width:780px) {
+    padding-top: 40px;
+    padding-bottom: 37px;
+  }
+
+  &__title {
+    margin-bottom: 28px;
+
+    @media (max-width:540px) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__subtitle {
+    display: inline-block;
+    margin-bottom: 34px;
+
+    @media (max-width:540px) {
+      margin-bottom: 26px;
+    }
+  }
+
+  &__block {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+
+    @media (max-width:1050px) {
+      flex-direction: column;
+    }
+
+    @media (max-width:540px) {
+      align-items: center;
+      gap: 41px;
+    }
+  }
+
+  &__list {
+    max-width: 782px;
+
+    @media (max-width:1250px) {
+      width: calc(52% - 15px);
+    }
+
+    @media (max-width:1050px) {
+      width: auto;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    border-radius: 10px;
+    padding: 27px 41px 37px;
+    width: 100%;
+    background-color: var(--ligth-secondary);
+
+    @media (max-width:540px) {
+      padding: 21px 20px 22px;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+
+      @media (max-width:540px) {
+        margin-bottom: 11px;
+      }
+    }
+  }
+
+  &__item-svg {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    transform: translateY(4px);
+    fill: var(--secondary);
+
+    @media (max-width:540px) {
+      width: 20px;
+      height: 20px;
+      transform: none;
+    }
+  }
+
+  &__item-text {
+    padding-left: 15px;
+    font-size: clamp(1rem, 0.85rem + 0.65vw, 1.625rem);
+    color: var(--dark);
+
+    @media (max-width:540px) {
+      padding-left: 8px;
+    }
+  }
+
+  &__img-block {
+    max-width: 690px;
+    min-width: 570px;
+
+    @media (max-width:1250px) {
+      align-self: center;
+      min-width: auto;
+      width: calc(48% - 15px);
+    }
+
+    @media (max-width:1050px) {
+      align-self: flex-start;
+      width: auto;
+    }
+
+    @media (max-width:540px) {
+      align-self: center;
+      max-width: 288px;
+    }
+  }
+}

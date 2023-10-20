@@ -1,0 +1,136 @@
+.hero {
+  position: relative;
+  max-height: 732px;
+
+  &__container {
+    display: flex;
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    @media (max-width:1250px) {
+      padding-bottom: 40px;
+    }
+
+    @media (max-width:1050px) {
+      padding-top: 40px;
+    }
+
+    @media (max-width:780px) {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+
+  &__content-block {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    max-width: 973px;
+  }
+
+  &__logos {
+    display: inline-flex;
+    width: clamp(3.438rem, 1.652rem + 5.29vw, 8rem);
+    transform: translateY(11px);
+
+    @media (max-width:1250px) {
+      transform: translateY(9px);
+    }
+
+    @media (max-width:1050px) {
+      transform: translateY(7px);
+    }
+
+    @media (max-width:780px) {
+      transform: translateY(5px);
+    }
+
+    @media (max-width:540px) {
+      width: 55px;
+      transform: translateY(4px);
+    }
+  }
+
+  &__text {
+    margin-bottom: 55px;
+    max-width: 820px;
+
+    @media (max-width:780px) {
+     margin-bottom: 35px;
+    }
+  }
+
+  &__try {
+    position: relative;
+    padding: 45px 41px 50px;
+    max-width: 782px;
+    overflow: hidden;
+
+    @media (max-width:540px) {
+      padding: 31px 20px 40px;
+    }
+  }
+
+  &__try-form {
+    max-width: 700px;
+
+    @media (max-width:540px) {
+      height: 113px;
+    }
+  }
+
+  &__try-input {
+
+    @media (max-width:540px) {
+      text-align: left;
+    }
+  }
+
+  &__try-btn {
+    width: min(40%, 264px);
+
+    @media (max-width:540px) {
+      width: 100%;
+      min-height: 45px;
+    }
+  }
+
+  &__img-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 732px;
+    transform: translateY(-98%);
+    pointer-events: none;
+
+    @media (max-width:1250px) {
+      display: none;
+    }
+  }
+
+  &__img-block {
+    position: relative;
+    width: clamp(27.063rem, -39.262rem + 84.9vw, 47.438rem);
+  }
+}
+
+.hero-deco-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 208px;
+  height: 305px;
+}
+
+.hero-deco-2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 277px;
+  height: 244px;
+
+  @media (max-width:540px) {
+    display: none;
+  }
+}

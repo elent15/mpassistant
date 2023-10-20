@@ -1,0 +1,199 @@
+<div class="modal" id="modal-reg">
+  <div class="modal__bg">
+    <img class="modal__bg-deco" src="./images/svg/modal-deco-bg.svg" alt="Декор">
+    <div class="modal__body">
+      <div class="modal__top">
+        <img class="logo modal__logo" src="./images/svg/logo.svg" alt="Логотип" width="260" height="26">
+        <button class="btn-reset modal__close-btn" type="button">
+          <img src="./images/svg/close.svg" alt="Закрыть" width="48" height="48">
+        </button>
+      </div>
+      <h2 class="second-title modal__title">
+        Регистрация
+      </h2>
+      <div class="modal__subtitle bg-text">
+        У вас нет аккаунта? Создайте свой аккаунт, это займет меньше минуты.
+      </div>
+      <form class="modal__form">
+        <div class="modal__form-block">
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              ФИО
+            </span>
+            <input class="modal__form-input" type="text" placeholder="Введите ваши ФИО">
+          </label>
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              Номер телефона
+            </span>
+            <input class="modal__form-input" type="tel" placeholder="Введите ваш номер телефона">
+          </label>
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              Ваш email
+            </span>
+            <input class="modal__form-input" type="email" placeholder="Введите ваш email">
+          </label>
+        </div>
+        <div class="modal__form-block">
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              Пароль
+            </span>
+            <input class="modal__form-input" type="password" placeholder="Введите пароль">
+            <img class="modal__form-eye-img" src="./images/svg/eye.svg" alt="Глаз" width="32" height="20">
+          </label>
+          <div class="modal__form-label-wrapper">
+            <label class="modal__form-label">
+              <span class="modal__form-span">
+                Промокод
+              </span>
+              <input class="modal__form-input" type="text" placeholder="Введите промокод">
+            </label>
+            <button class="btn-reset btn primary-btn modal__form-promo-btn" type="button">
+              <span>Применить</span>
+              <svg class="modal__check-mark">
+                <use xlink:href="#check-mark"></use>
+              </svg>
+            </button>
+          </div>
+          <label class="modal__form-label modal__form-label-checkbox">
+            <input class="modal__form-input-checkbox" type="checkbox">
+            <span class="modal__form-checkbox"></span>
+            <span class="modal__form-text">
+              Я согласен со всеми условиями
+              <a class="modal__form-link" href="#">
+                пользовательского соглашения
+              </a>
+              и
+              <a class="modal__form-link" href="#">
+                политики конфиденциальности
+              </a>
+            </span>
+          </label>
+        </div>
+        <div class="modal__form-bottom">
+          <span class="account modal__account">
+            Уже есть аккаунт?
+          </span>
+          <button class="btn-reset btn-entrance modal__btn-entrance" type="button" data-modal="modal-entrance">
+            <span class="entrance">
+              Вход
+            </span>
+          </button>
+          <button class="btn btn-reset btn primary-btn modal__form-btn btn-js" type="submit">
+            Получить бесплатный доступ
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-body-bg">
+      <img class="modal-body-deco" src="./images/svg/modal-deco-sm.svg" alt="Декор">
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-entrance">
+  <div class="modal__bg">
+    <img class="modal__bg-deco" src="./images/svg/modal-deco-bg.svg" alt="Декор">
+    <div class="modal__body">
+      <div class="modal__top">
+        <img class="logo modal__logo" src="./images/svg/logo.svg" alt="Логотип" width="260" height="26">
+        <button class="btn-reset modal__close-btn" type="button">
+          <img src="./images/svg/close.svg" alt="Закрыть" width="48" height="48">
+        </button>
+      </div>
+      <h2 class="second-title modal__title">
+        Авторизация
+      </h2>
+      <div class="modal__subtitle bg-text">
+        Введите свой email и пароль для авторизации в сервисе
+      </div>
+      <form class="modal__form modal__form-entrance">
+        <div class="modal__form-block">
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              Ваш email
+            </span>
+            <input class="modal__form-input" type="email" placeholder="Введите ваш email">
+          </label>
+        </div>
+        <div class="modal__form-block">
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              Пароль
+            </span>
+            <input class="modal__form-input" type="password" placeholder="Введите пароль">
+            <img class="modal__form-eye-img" src="./images/svg/eye.svg" alt="Глаз" width="32" height="20">
+          </label>
+          <label class="modal__form-label modal__form-label-checkbox">
+            <input class="modal__form-input-checkbox" type="checkbox">
+            <span class="modal__form-checkbox"></span>
+            <span class="modal__form-text">
+              Запомнить меня
+            </span>
+          </label>
+        </div>
+        <div class="modal__form-bottom modal__form-entrance-bottom">
+          <span class="account modal__account">
+            У вас нет аккаунта?
+          </span>
+          <button class="btn btn-reset btn primary-btn modal__btn-registration" type="button" data-modal="modal-reg">
+            Зарегистрируйтесь
+          </button>
+          <button class="btn-reset btn-entrance modal__btn-entrance modal__form-btn-entrance btn-js" type="submit">
+            <span class="entrance">
+              Вход
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-body-bg">
+      <img class="modal-body-deco" src="./images/svg/modal-deco-sm.svg" alt="Декор">
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-recover">
+  <div class="modal__bg">
+    <img class="modal__bg-deco" src="./images/svg/modal-deco-bg.svg" alt="Декор">
+    <div class="modal__body">
+      <div class="modal__top">
+        <img class="logo modal__logo" src="./images/svg/logo.svg" alt="Логотип" width="260" height="26">
+        <button class="btn-reset modal__close-btn" type="button">
+          <img src="./images/svg/close.svg" alt="Закрыть" width="48" height="48">
+        </button>
+      </div>
+      <h2 class="second-title modal__title">
+        Забыли пароль?
+      </h2>
+      <div class="modal__subtitle bg-text">
+        Введите свой email, указанный при регистрации. Вышлем ссылку для сброса пароля.
+      </div>
+      <form class="modal__form modal__form-entrance">
+        <div class="modal__form-block">
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              Ваш email
+            </span>
+            <input class="modal__form-input" type="email" placeholder="Введите ваш email">
+          </label>
+        </div>
+        <div class="modal__form-bottom modal__form-recover-bottom">
+          <button class="btn btn-reset btn primary-btn modal__form-btn-recover btn-js" type="submit">
+            Восстановить
+          </button>
+          <button class="btn-reset btn-entrance modal__btn-entrance modal__btn-recover" type="button" data-modal="modal-entrance">
+            <span class="entrance">
+              Вход
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-body-bg">
+      <img class="modal-body-deco" src="./images/svg/modal-deco-sm.svg" alt="Декор">
+    </div>
+  </div>
+</div>
