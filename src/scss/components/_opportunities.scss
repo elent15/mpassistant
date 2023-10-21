@@ -61,6 +61,10 @@
       padding-right: 15px;
     }
 
+    &:focus-visible {
+      outline-style: solid;
+    }
+
     &:focus {
       outline-color: var(--primary);
     }

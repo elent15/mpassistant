@@ -70,6 +70,10 @@ p {
     letter-spacing: 0.32px;
   }
 
+  &:focus-visible {
+    outline-style: solid;
+  }
+
   &:focus {
     outline-color: var(--primary);
   }
@@ -143,6 +147,10 @@ p {
   @media (max-width:540px) {
     height: 25px;
     width: 26px;
+  }
+
+  &:focus-visible {
+    outline-style: solid;
   }
 
   &:focus {

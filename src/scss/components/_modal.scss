@@ -82,6 +82,10 @@
     transform: rotate(0);
     transition: outline-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 
+    &:focus-visible {
+      outline-style: solid;
+    }
+
     &:focus {
       outline-color: var(--primary);
     }

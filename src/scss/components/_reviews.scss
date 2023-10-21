@@ -133,6 +133,10 @@
         letter-spacing: 0.36px;
       }
 
+      &:focus-visible {
+        outline-style: solid;
+      }
+
       &:focus {
         outline-color: var(--primary);
       }
