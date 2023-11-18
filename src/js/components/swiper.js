@@ -1,3 +1,4 @@
+// слайдер
 new Swiper('.reviews-swiper', {
   navigation: {
     nextEl: '.reviews-swiper-button-next',

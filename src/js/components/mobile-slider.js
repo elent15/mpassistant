@@ -1,3 +1,4 @@
+// слайдер на мобильной версии сайта
 const slider = document.querySelector('.mobile-swiper');
 let mySwiper;
 function mobileSlider() {

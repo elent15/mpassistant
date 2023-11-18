@@ -1,3 +1,4 @@
+// табы
 const tabs = () => {
   const tabs = Array.from(document.querySelectorAll('.tabs'));
   let btnActive;

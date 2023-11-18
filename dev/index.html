@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mpassistant</title>
+  <link rel="preload" href="./fonts/NTSomic-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/NTSomic-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./css/vendor.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <script defer src="./js/vendor.js"></script>
+  <script defer src="./js/main.js"></script>
+</head>
+
+<body>
+  <svg display="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <symbol id="check-mark" viewBox="0 0 12 8">
+      <path
+        d="M9.95162 0.390809C10.42 -0.130071 11.1801 -0.130071 11.6485 0.390809C11.8828 0.651248 12 0.992279 12 1.33346C12 1.67464 11.8828 2.01567 11.6484 2.27611L6.84846 7.60934C6.38006 8.13022 5.61994 8.13022 5.15154 7.60934L0.351596 2.27611C-0.117199 1.75523 -0.117199 0.91154 0.351596 0.39066C0.819991 -0.130218 1.58012 -0.130218 2.04851 0.39066L6.00007 4.78125L9.95162 0.390809Z" />
+    </symbol>
+    <symbol id="check-mark-circle" viewBox="0 0 26 26">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M13 26C20.1797 26 26 20.1797 26 13C26 5.8203 20.1797 0 13 0C5.8203 0 0 5.8203 0 13C0 20.1797 5.8203 26 13 26ZM13 23.6364C18.8743 23.6364 23.6364 18.8743 23.6364 13C23.6364 7.1257 18.8743 2.36364 13 2.36364C7.1257 2.36364 2.36364 7.1257 2.36364 13C2.36364 18.8743 7.1257 23.6364 13 23.6364ZM11.8602 14.3672L9.35316 11.8602L7.68182 13.5315L11.8602 17.7099L13.1137 16.4564L19.0351 10.535L17.3637 8.86364L11.8602 14.3672Z"
+        fill="var(--black)" />
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M13 26C20.1797 26 26 20.1797 26 13C26 5.8203 20.1797 0 13 0C5.8203 0 0 5.8203 0 13C0 20.1797 5.8203 26 13 26ZM13 23.6364C18.8743 23.6364 23.6364 18.8743 23.6364 13C23.6364 7.1257 18.8743 2.36364 13 2.36364C7.1257 2.36364 2.36364 7.1257 2.36364 13C2.36364 18.8743 7.1257 23.6364 13 23.6364ZM11.8602 14.3672L9.35316 11.8602L7.68182 13.5315L11.8602 17.7099L13.1137 16.4564L19.0351 10.535L17.3637 8.86364L11.8602 14.3672Z" />
+    </symbol>
+    <symbol id="arrow-right" viewBox="0 0 22 23">
+      <path
+        d="M0.73346 11.7358H12.1681L10.4811 13.4154C10.4124 13.4836 10.3578 13.5647 10.3206 13.6541C10.2834 13.7435 10.2642 13.8393 10.2642 13.9362C10.2642 14.033 10.2834 14.1289 10.3206 14.2182C10.3578 14.3076 10.4124 14.3887 10.4811 14.4569C10.5493 14.5257 10.6304 14.5802 10.7198 14.6175C10.8092 14.6547 10.9051 14.6739 11.0019 14.6739C11.0987 14.6739 11.1946 14.6547 11.284 14.6175C11.3734 14.5802 11.4545 14.5257 11.5227 14.4569L14.4565 11.5231C14.5233 11.4533 14.5756 11.3711 14.6105 11.281C14.6839 11.1025 14.6839 10.9022 14.6105 10.7236C14.5756 10.6336 14.5233 10.5513 14.4565 10.4816L11.5227 7.54774C11.3845 7.40962 11.1972 7.33203 11.0019 7.33203C10.8066 7.33203 10.6193 7.40962 10.4811 7.54774C10.343 7.68585 10.2654 7.87317 10.2654 8.06849C10.2654 8.26381 10.343 8.45114 10.4811 8.58925L12.1681 10.2689H0.73346C0.538934 10.2689 0.352376 10.3461 0.214825 10.4837C0.077275 10.6212 0 10.8078 0 11.0023C0 11.1969 0.077275 11.3834 0.214825 11.521C0.352376 11.6585 0.538934 11.7358 0.73346 11.7358Z"
+        fill="var(--black)" />
+      <path
+        d="M0.73346 11.7358H12.1681L10.4811 13.4154C10.4124 13.4836 10.3578 13.5647 10.3206 13.6541C10.2834 13.7435 10.2642 13.8393 10.2642 13.9362C10.2642 14.033 10.2834 14.1289 10.3206 14.2182C10.3578 14.3076 10.4124 14.3887 10.4811 14.4569C10.5493 14.5257 10.6304 14.5802 10.7198 14.6175C10.8092 14.6547 10.9051 14.6739 11.0019 14.6739C11.0987 14.6739 11.1946 14.6547 11.284 14.6175C11.3734 14.5802 11.4545 14.5257 11.5227 14.4569L14.4565 11.5231C14.5233 11.4533 14.5756 11.3711 14.6105 11.281C14.6839 11.1025 14.6839 10.9022 14.6105 10.7236C14.5756 10.6336 14.5233 10.5513 14.4565 10.4816L11.5227 7.54774C11.3845 7.40962 11.1972 7.33203 11.0019 7.33203C10.8066 7.33203 10.6193 7.40962 10.4811 7.54774C10.343 7.68585 10.2654 7.87317 10.2654 8.06849C10.2654 8.26381 10.343 8.45114 10.4811 8.58925L12.1681 10.2689H0.73346C0.538934 10.2689 0.352376 10.3461 0.214825 10.4837C0.077275 10.6212 0 10.8078 0 11.0023C0 11.1969 0.077275 11.3834 0.214825 11.521C0.352376 11.6585 0.538934 11.7358 0.73346 11.7358Z" />
+      <path
+        d="M11.002 0C8.63099 0.00934108 6.32567 0.779829 4.42555 2.19799C2.52543 3.61615 1.13095 5.60701 0.447478 7.87736C0.418276 7.97076 0.408061 8.06907 0.417435 8.16648C0.42681 8.26389 0.455583 8.35844 0.502061 8.44457C0.54854 8.53069 0.611782 8.60664 0.688064 8.66794C0.764346 8.72924 0.852125 8.77466 0.94623 8.80152C1.13297 8.85599 1.33371 8.83404 1.50427 8.7405C1.67483 8.64697 1.80125 8.48951 1.85572 8.30277C2.50627 6.10511 3.92665 4.21531 5.85679 2.97939C7.78692 1.74347 10.0977 1.24413 12.3659 1.57281C14.6341 1.90148 16.7081 3.03617 18.208 4.76912C19.708 6.50207 20.5335 8.71731 20.5335 11.0092C20.5335 13.3012 19.708 15.5164 18.208 17.2493C16.7081 18.9823 14.6341 20.117 12.3659 20.4457C10.0977 20.7743 7.78692 20.275 5.85679 19.0391C3.92665 17.8032 2.50627 15.9134 1.85572 13.7157C1.83031 13.6219 1.78652 13.5341 1.72688 13.4574C1.66725 13.3807 1.59297 13.3166 1.50835 13.2688C1.42373 13.221 1.33046 13.1905 1.23396 13.1791C1.13747 13.1677 1.03966 13.1756 0.94623 13.2023C0.852949 13.2292 0.76594 13.2744 0.69025 13.3352C0.61456 13.396 0.551694 13.4712 0.505299 13.5565C0.458904 13.6418 0.429903 13.7354 0.419977 13.832C0.410052 13.9286 0.419399 14.0262 0.447478 14.1191C1.02588 16.0769 2.13757 17.8351 3.6582 19.1971C5.17883 20.5591 7.04842 21.4712 9.05782 21.8313C11.0672 22.1914 13.1372 21.9853 15.0362 21.2361C16.9351 20.4869 18.5882 19.2242 19.8105 17.5891C21.0327 15.954 21.776 14.0112 21.9571 11.9778C22.1381 9.94442 21.7499 7.90077 20.8358 6.07546C19.9217 4.25014 18.5178 2.71515 16.7811 1.64219C15.0444 0.569236 13.0434 0.000636627 11.002 0Z"
+        fill="var(--black)" />
+      <path
+        d="M11.002 0C8.63099 0.00934108 6.32567 0.779829 4.42555 2.19799C2.52543 3.61615 1.13095 5.60701 0.447478 7.87736C0.418276 7.97076 0.408061 8.06907 0.417435 8.16648C0.42681 8.26389 0.455583 8.35844 0.502061 8.44457C0.54854 8.53069 0.611782 8.60664 0.688064 8.66794C0.764346 8.72924 0.852125 8.77466 0.94623 8.80152C1.13297 8.85599 1.33371 8.83404 1.50427 8.7405C1.67483 8.64697 1.80125 8.48951 1.85572 8.30277C2.50627 6.10511 3.92665 4.21531 5.85679 2.97939C7.78692 1.74347 10.0977 1.24413 12.3659 1.57281C14.6341 1.90148 16.7081 3.03617 18.208 4.76912C19.708 6.50207 20.5335 8.71731 20.5335 11.0092C20.5335 13.3012 19.708 15.5164 18.208 17.2493C16.7081 18.9823 14.6341 20.117 12.3659 20.4457C10.0977 20.7743 7.78692 20.275 5.85679 19.0391C3.92665 17.8032 2.50627 15.9134 1.85572 13.7157C1.83031 13.6219 1.78652 13.5341 1.72688 13.4574C1.66725 13.3807 1.59297 13.3166 1.50835 13.2688C1.42373 13.221 1.33046 13.1905 1.23396 13.1791C1.13747 13.1677 1.03966 13.1756 0.94623 13.2023C0.852949 13.2292 0.76594 13.2744 0.69025 13.3352C0.61456 13.396 0.551694 13.4712 0.505299 13.5565C0.458904 13.6418 0.429903 13.7354 0.419977 13.832C0.410052 13.9286 0.419399 14.0262 0.447478 14.1191C1.02588 16.0769 2.13757 17.8351 3.6582 19.1971C5.17883 20.5591 7.04842 21.4712 9.05782 21.8313C11.0672 22.1914 13.1372 21.9853 15.0362 21.2361C16.9351 20.4869 18.5882 19.2242 19.8105 17.5891C21.0327 15.954 21.776 14.0112 21.9571 11.9778C22.1381 9.94442 21.7499 7.90077 20.8358 6.07546C19.9217 4.25014 18.5178 2.71515 16.7811 1.64219C15.0444 0.569236 13.0434 0.000636627 11.002 0Z" />
+    </symbol>
+    <symbol id="quote" viewBox="0 0 223 144">
+      <path
+        d="M101.296 50.648C101.296 78.7447 58.2546 123.847 43.7837 139.375C38.218 145.29 28.9418 145.29 23.376 139.744C23.376 139.744 23.376 139.744 23.005 139.375C17.8103 134.199 17.8103 125.696 22.6339 120.15C28.9418 113.866 34.5075 106.841 39.7022 100.187C17.4393 95.0113 0 74.6781 0 50.648C0 22.921 22.6339 0 50.8336 0C79.0333 0 101.296 22.5513 101.296 50.648ZM171.795 0C143.967 0 120.962 22.5513 120.962 50.648C120.962 75.0478 138.401 95.381 161.406 100.187C155.84 107.211 150.275 113.866 144.338 120.15C139.143 125.696 139.514 133.829 144.709 139.375C144.709 139.375 144.709 139.375 145.08 139.744C150.646 145.659 159.922 145.29 165.488 139.375C179.958 124.217 223 78.7447 223 50.648C222.629 22.5513 199.995 0 171.795 0Z" />
+    </symbol>
+  </svg>
+  <header class="header">
+  <div class="container header__container">
+    <img class="logo header__logo" src="./images/svg/logo.svg" alt="Логотип" width="260" height="26">
+    <div class="about-subtitle header__about-subtitle">
+      Аналитика и&nbsp;оцифровка продаж
+      <span class="about-subtitle__wb">
+        Wildberries
+      </span>
+      и&nbsp;
+      <span class="about-subtitle__ozon">
+        Ozon
+      </span>
+    </div>
+    <div class="header__nav">
+      <div class="burger-deco">
+        <img class="burger-deco-img" src="./images/svg/modal-deco-sm.svg" alt="Декор">
+      </div>
+      <ul class="list-reset header__nav-list">
+        <li class="header__nav-item">
+          <a href="#why" class="header__nav-link">
+            О&nbsp;нас
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="#opportunities" class="header__nav-link">
+            Возможности
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="#tariff" class="header__nav-link">
+            Тарифы
+          </a>
+        </li>
+      </ul>
+      <div class="header__btns">
+        <div class="btn-entrance-wrapper">
+          <span class="account">
+            Уже есть аккаунт?
+          </span>
+          <button class="btn-reset btn-entrance" type="button" data-modal="modal-entrance" aria-label="Вход">
+            <span class="entrance">
+              Вход
+            </span>
+          </button>
+        </div>
+        <button class="btn btn-reset primary-btn header__btn-registration" type="button" data-modal="modal-reg">
+          Зарегистрироваться
+        </button>
+      </div>
+    </div>
+    <button class="btn-reset burger" type="button" aria-label="Меню">
+      <span class="burger__line"></span>
+      <span class="burger__line"></span>
+      <span class="burger__line"></span>
+    </button>
+  </div>
+</header>
+
+  <div class="modal" id="modal-reg">
+  <div class="modal__bg">
+    <img class="modal__bg-deco" src="./images/svg/modal-deco-bg.svg" alt="Декор">
+    <div class="modal__body">
+      <div class="modal__top">
+        <img class="logo modal__logo" src="./images/svg/logo.svg" alt="Логотип" width="260" height="26">
+        <button class="btn-reset modal__close-btn" type="button">
+          <img src="./images/svg/close.svg" alt="Закрыть" width="48" height="48">
+        </button>
+      </div>
+      <h2 class="second-title modal__title">
+        Регистрация
+      </h2>
+      <div class="modal__subtitle bg-text">
+        У вас нет аккаунта? Создайте свой аккаунт, это займет меньше минуты.
+      </div>
+      <form class="modal__form">
+        <div class="modal__form-block">
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              ФИО
+            </span>
+            <input class="modal__form-input" type="text" placeholder="Введите ваши ФИО">
+          </label>
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              Номер телефона
+            </span>
+            <input class="modal__form-input" type="tel" placeholder="Введите ваш номер телефона">
+          </label>
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              Ваш email
+            </span>
+            <input class="modal__form-input" type="email" placeholder="Введите ваш email">
+          </label>
+        </div>
+        <div class="modal__form-block">
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              Пароль
+            </span>
+            <input class="modal__form-input" type="password" placeholder="Введите пароль">
+            <img class="modal__form-eye-img" src="./images/svg/eye.svg" alt="Глаз" width="32" height="20">
+          </label>
+          <div class="modal__form-label-wrapper">
+            <label class="modal__form-label">
+              <span class="modal__form-span">
+                Промокод
+              </span>
+              <input class="modal__form-input" type="text" placeholder="Введите промокод">
+            </label>
+            <button class="btn-reset btn primary-btn modal__form-promo-btn" type="button">
+              <span>Применить</span>
+              <svg class="modal__check-mark">
+                <use xlink:href="#check-mark"></use>
+              </svg>
+            </button>
+          </div>
+          <label class="modal__form-label modal__form-label-checkbox">
+            <input class="modal__form-input-checkbox" type="checkbox">
+            <span class="modal__form-checkbox"></span>
+            <span class="modal__form-text">
+              Я согласен со всеми условиями
+              <a class="modal__form-link" href="#">
+                пользовательского соглашения
+              </a>
+              и
+              <a class="modal__form-link" href="#">
+                политики конфиденциальности
+              </a>
+            </span>
+          </label>
+        </div>
+        <div class="modal__form-bottom">
+          <span class="account modal__account">
+            Уже есть аккаунт?
+          </span>
+          <button class="btn-reset btn-entrance modal__btn-entrance" type="button" data-modal="modal-entrance">
+            <span class="entrance">
+              Вход
+            </span>
+          </button>
+          <button class="btn btn-reset btn primary-btn modal__form-btn btn-js" type="submit">
+            Получить бесплатный доступ
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-body-bg">
+      <img class="modal-body-deco" src="./images/svg/modal-deco-sm.svg" alt="Декор">
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-entrance">
+  <div class="modal__bg">
+    <img class="modal__bg-deco" src="./images/svg/modal-deco-bg.svg" alt="Декор">
+    <div class="modal__body">
+      <div class="modal__top">
+        <img class="logo modal__logo" src="./images/svg/logo.svg" alt="Логотип" width="260" height="26">
+        <button class="btn-reset modal__close-btn" type="button">
+          <img src="./images/svg/close.svg" alt="Закрыть" width="48" height="48">
+        </button>
+      </div>
+      <h2 class="second-title modal__title">
+        Авторизация
+      </h2>
+      <div class="modal__subtitle bg-text">
+        Введите свой email и пароль для авторизации в сервисе
+      </div>
+      <form class="modal__form modal__form-entrance">
+        <div class="modal__form-block">
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              Ваш email
+            </span>
+            <input class="modal__form-input" type="email" placeholder="Введите ваш email">
+          </label>
+        </div>
+        <div class="modal__form-block">
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              Пароль
+            </span>
+            <input class="modal__form-input" type="password" placeholder="Введите пароль">
+            <img class="modal__form-eye-img" src="./images/svg/eye.svg" alt="Глаз" width="32" height="20">
+          </label>
+          <label class="modal__form-label modal__form-label-checkbox">
+            <input class="modal__form-input-checkbox" type="checkbox">
+            <span class="modal__form-checkbox"></span>
+            <span class="modal__form-text">
+              Запомнить меня
+            </span>
+          </label>
+        </div>
+        <div class="modal__form-bottom modal__form-entrance-bottom">
+          <span class="account modal__account">
+            У вас нет аккаунта?
+          </span>
+          <button class="btn btn-reset btn primary-btn modal__btn-registration" type="button" data-modal="modal-reg">
+            Зарегистрируйтесь
+          </button>
+          <button class="btn-reset btn-entrance modal__btn-entrance modal__form-btn-entrance btn-js" type="submit">
+            <span class="entrance">
+              Вход
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-body-bg">
+      <img class="modal-body-deco" src="./images/svg/modal-deco-sm.svg" alt="Декор">
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-recover">
+  <div class="modal__bg">
+    <img class="modal__bg-deco" src="./images/svg/modal-deco-bg.svg" alt="Декор">
+    <div class="modal__body">
+      <div class="modal__top">
+        <img class="logo modal__logo" src="./images/svg/logo.svg" alt="Логотип" width="260" height="26">
+        <button class="btn-reset modal__close-btn" type="button">
+          <img src="./images/svg/close.svg" alt="Закрыть" width="48" height="48">
+        </button>
+      </div>
+      <h2 class="second-title modal__title">
+        Забыли пароль?
+      </h2>
+      <div class="modal__subtitle bg-text">
+        Введите свой email, указанный при регистрации. Вышлем ссылку для сброса пароля.
+      </div>
+      <form class="modal__form modal__form-entrance">
+        <div class="modal__form-block">
+          <label class="modal__form-label">
+            <span class="modal__form-span">
+              Ваш email
+            </span>
+            <input class="modal__form-input" type="email" placeholder="Введите ваш email">
+          </label>
+        </div>
+        <div class="modal__form-bottom modal__form-recover-bottom">
+          <button class="btn btn-reset btn primary-btn modal__form-btn-recover btn-js" type="submit">
+            Восстановить
+          </button>
+          <button class="btn-reset btn-entrance modal__btn-entrance modal__btn-recover" type="button" data-modal="modal-entrance">
+            <span class="entrance">
+              Вход
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-body-bg">
+      <img class="modal-body-deco" src="./images/svg/modal-deco-sm.svg" alt="Декор">
+    </div>
+  </div>
+</div>
+
+  <main>
+    <section class="hero">
+  <div class="container hero__container">
+    <div class="hero__content-block">
+      <h1 class="first-title">
+        <span class="first-title__primary">
+          Внутренняя аналитика
+        </span>
+        <br>
+        и
+        <span class="first-title__secondary">
+          финансовый учёт
+        </span>
+        для&nbsp;бизнеса на&nbsp;маркетплейсах
+        <span class="hero__logos">
+          <picture>
+            <source srcset="./images/hero-marketplaces-logos.webp" type="image/webp">
+            <img src="./images/hero-marketplaces-logos.png" alt="Логотипы OZON и WB" width="128" height="56">
+          </picture>
+        </span>
+      </h1>
+      <div class="bg-text hero__text">
+        Увеличивай прибыль, автоматизируй рутину и&nbsp;экономь время на&nbsp;сборе и&nbsp;анализе отчётов
+      </div>
+      <div class="try hero__try">
+        <div class="sm-text try__text hero__try-text">
+          Начните свой 3-дневный пробный период с&nbsp;неограниченным доступом ко&nbsp;всем возможностям
+        </div>
+        <form class="try__form hero__try-form">
+          <label class="try__form-label hero__try-label">
+            <input type="email" class="try__form-input hero__try-input" placeholder="Введите ваш email">
+          </label>
+          <button class="btn btn-reset primary-btn try__form-btn hero__try-btn" type="submit">
+            Попробовать
+          </button>
+        </form>
+        <img class="hero-deco-1" src="./images/svg/hero-deco-1.svg" alt="Декор">
+        <img class="hero-deco-2" src="./images/svg/hero-deco-2.svg" alt="Декор">
+      </div>
+    </div>
+  </div>
+  <div class="container hero__img-container">
+    <div class="hero__img-block">
+      <picture class="hero__picture">
+        <source srcset="./images/hero-bg.webp" type="image/webp">
+        <img class="hero__img" src="./images/hero-bg.png" alt="Посылки с Wb и Ozon" width="759" height="630">
+      </picture>
+    </div>
+  </div>
+</section>
+
+    <div class="numbers">
+  <div class="container numbers__container">
+    <div class="numbers__card-block">
+      <div class="numbers__card">
+        <span class="numbers__card-number">
+          777
+        </span>
+        <div class="text numbers__card-text">
+          Увеличивай прибыль, автоматизируй рутину и&nbsp;экономь время на&nbsp;сборе и&nbsp;анализе отчётов
+        </div>
+      </div>
+      <div class="numbers__card">
+        <span class="numbers__card-number">
+          5
+        </span>
+        <div class="text numbers__card-text">
+          Увеличивай прибыль, автоматизируй рутину и&nbsp;экономь время на&nbsp;сборе и&nbsp;анализе отчётов
+        </div>
+      </div>
+      <div class="numbers__card">
+        <span class="numbers__card-number">
+          100&nbsp;000
+        </span>
+        <div class="text numbers__card-text">
+          Увеличивай прибыль, автоматизируй рутину и&nbsp;экономь время на&nbsp;сборе и&nbsp;анализе отчётов
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <section class="opportunities" id="opportunities">
+  <div class="container opportunities__container">
+    <h2 class="second-title opportunities__title">
+      Возможности сервиса
+    </h2>
+    <div class="opportunities__tabs-block tabs-block">
+      <ul class="list-reset opportunities__tabs-list tabs">
+        <li class="opportunities__tabs-item">
+          <button class="btn-reset opportunities__tabs-btn opportunities__tabs-btn--active tabs__btn" type="button"
+            data-tab="opportunities-tab-1">
+            Финансовая аналитика
+          </button>
+        </li>
+        <li class="opportunities__tabs-item">
+          <button class="btn-reset opportunities__tabs-btn tabs__btn" type="button" data-tab="opportunities-tab-2">
+            Товарная аналитика
+          </button>
+        </li>
+        <li class="opportunities__tabs-item">
+          <button class="btn-reset opportunities__tabs-btn tabs__btn" type="button" data-tab="opportunities-tab-3">
+            Аналитика внутренней рекламы
+          </button>
+        </li>
+        <li class="opportunities__tabs-item">
+          <button class="btn-reset opportunities__tabs-btn tabs__btn" type="button" data-tab="opportunities-tab-4">
+            Статистика
+          </button>
+        </li>
+        <li class="opportunities__tabs-item">
+          <button class="btn-reset opportunities__tabs-btn tabs__btn" type="button" data-tab="opportunities-tab-5">
+            Инструменты
+          </button>
+        </li>
+      </ul>
+      <div class="opportunities__tab opportunities__tab--active tab" id="opportunities-tab-1">
+        <div class="opportunities__tab-content">
+          <h3 class="third-title opportunities__content-title">
+            Инструменты для финансовой аналитики
+          </h3>
+          <ul class="list-reset opportunities__content-list">
+            <li class="text opportunities__content-item">
+              Отчёт о&nbsp;прибылях и&nbsp;убытках (P&amp;L)
+            </li>
+            <li class="text opportunities__content-item">
+              Отчёт о&nbsp;движении денежных средств (ДДС)
+            </li>
+            <li class="text opportunities__content-item">
+              Журнал операций
+            </li>
+            <li class="text opportunities__content-item">
+              Сводка продаж
+            </li>
+            <li class="text opportunities__content-item">
+              Учёт самовыкупов
+            </li>
+          </ul>
+          <button class="btn btn-reset primary-btn opportunities__content-btn" type="button">
+            Попробовать бесплатно
+          </button>
+        </div>
+        <div class="opportunities__tab-img">
+          <picture>
+            <source srcset="./images/capabilities-bg-1.webp" type="image/webp">
+            <img src="./images/capabilities-bg-1.jpg" alt="Отчёт" width="731" height="470">
+          </picture>
+        </div>
+      </div>
+      <div class="opportunities__tab tab" id="opportunities-tab-2">
+        <div class="opportunities__tab-content">
+          <h3 class="third-title opportunities__content-title">
+            Инструменты для&nbsp;товарной аналитики
+          </h3>
+          <ul class="list-reset opportunities__content-list">
+            <li class="text opportunities__content-item">
+              Сводка продаж по&nbsp;артикулам и&nbsp;размерам
+            </li>
+            <li class="text opportunities__content-item">
+              ABC-анализ ассортимента
+            </li>
+            <li class="text opportunities__content-item">
+              Управление себестоимость, ценами, скидками
+            </li>
+            <li class="text opportunities__content-item">
+              Контроль остатков
+            </li>
+            <li class="text opportunities__content-item">
+              Работа с&nbsp;поставками Wildberries
+            </li>
+            <li class="text opportunities__content-item">
+              Расчет поставок
+            </li>
+          </ul>
+          <button class="btn btn-reset primary-btn opportunities__content-btn" type="button">
+            Попробовать бесплатно
+          </button>
+        </div>
+        <div class="opportunities__tab-img">
+          <picture>
+            <source srcset="./images/capabilities-bg-2.webp" type="image/webp">
+            <img src="./images/capabilities-bg-2.jpg" alt="Отчёт" width="731" height="470" loading="lazy">
+          </picture>
+        </div>
+      </div>
+      <div class="opportunities__tab tab" id="opportunities-tab-3">
+        <div class="opportunities__tab-content">
+          <h3 class="third-title opportunities__content-title">
+            Инструменты для аналитики внутренней рекламы на маркетплейсах
+          </h3>
+          <ul class="list-reset opportunities__content-list">
+            <li class="text opportunities__content-item">
+              Аналитика рекламы
+            </li>
+            <li class="text opportunities__content-item">
+              Учет расходов по&nbsp;рекламным кампаниям
+            </li>
+            <li class="text opportunities__content-item">
+              Список рекламных кампаний с&nbsp;детальной информацией в&nbsp;одном месте
+            </li>
+            <li class="text opportunities__content-item">
+              Определение реальной рекламной ставки в&nbsp;поиске Wildberries
+            </li>
+          </ul>
+          <button class="btn btn-reset primary-btn opportunities__content-btn" type="button">
+            Попробовать бесплатно
+          </button>
+        </div>
+        <div class="opportunities__tab-img">
+          <picture>
+            <source srcset="./images/capabilities-bg-3.webp" type="image/webp">
+            <img src="./images/capabilities-bg-3.jpg" alt="Отчёт" width="731" height="470" loading="lazy">
+          </picture>
+        </div>
+      </div>
+      <div class="opportunities__tab tab" id="opportunities-tab-4">
+        <div class="opportunities__tab-content">
+          <h3 class="third-title opportunities__content-title">
+            Инструменты для статистики
+          </h3>
+          <ul class="list-reset opportunities__content-list">
+            <li class="text opportunities__content-item">
+              Дашборд
+            </li>
+            <li class="text opportunities__content-item">
+              Список всех заказов
+            </li>
+            <li class="text opportunities__content-item">
+              География заказов и&nbsp;продаж
+            </li>
+            <li class="text opportunities__content-item">
+              Сравнение статистики по&nbsp;периодам
+            </li>
+            <li class="text opportunities__content-item">
+              Сводная информация о&nbsp;заказах по&nbsp;времени
+            </li>
+          </ul>
+          <button class="btn btn-reset primary-btn opportunities__content-btn" type="button">
+            Попробовать бесплатно
+          </button>
+        </div>
+        <div class="opportunities__tab-img">
+          <picture>
+            <source srcset="./images/capabilities-bg-4.webp" type="image/webp">
+            <img src="./images/capabilities-bg-4.jpg" alt="Отчёт" width="731" height="470" loading="lazy">
+          </picture>
+        </div>
+      </div>
+      <div class="opportunities__tab tab" id="opportunities-tab-5">
+        <div class="opportunities__tab-content">
+          <h3 class="third-title opportunities__content-title">
+            Дополнительные инструменты
+          </h3>
+          <ul class="list-reset opportunities__content-list">
+            <li class="text opportunities__content-item">
+              Калькулятор unit экономики
+            </li>
+            <li class="text opportunities__content-item">
+              Калькулятор участия в&nbsp;акциях Wildberries
+            </li>
+          </ul>
+          <button class="btn btn-reset primary-btn opportunities__content-btn" type="button">
+            Попробовать бесплатно
+          </button>
+        </div>
+        <div class="opportunities__tab-img">
+          <picture>
+            <source srcset="./images/capabilities-bg-5.webp" type="image/webp">
+            <img src="./images/capabilities-bg-5.jpg" alt="Отчёт" width="731" height="470" loading="lazy">
+          </picture>
+        </div>
+      </div>
+    </div>
+    <div class="opportunities__accordion-block">
+      <ul class="list-reset opportunities__accordion-list">
+        <li class="opportunities__accordion accordion-js">
+          <button class="btn-reset opportunities__accordion-trigger accordion-trigger-js" type="button" aria-expanded="false">
+            <span class="opportunities__accordion-header">
+              Финансовая аналитика
+            </span>
+            <span class="opportunities__accordion-icon"></span>
+          </button>
+          <div class="opportunities__accordion-content accordion-content-js" aria-hidden="true">
+            <div class="opportunities__tab-content">
+              <h3 class="third-title opportunities__content-title">
+                Инструменты для финансовой аналитики
+              </h3>
+              <ul class="list-reset opportunities__content-list">
+                <li class="text opportunities__content-item">
+                  Отчёт о&nbsp;прибылях и&nbsp;убытках (P&amp;L)
+                </li>
+                <li class="text opportunities__content-item">
+                  Отчёт о&nbsp;движении денежных средств (ДДС)
+                </li>
+                <li class="text opportunities__content-item">
+                  Журнал операций
+                </li>
+                <li class="text opportunities__content-item">
+                  Сводка продаж
+                </li>
+                <li class="text opportunities__content-item">
+                  Учёт самовыкупов
+                </li>
+              </ul>
+              <div class="opportunities__tab-img">
+                <picture>
+                  <source srcset="./images/capabilities-bg-1.webp" type="image/webp">
+                  <img src="./images/capabilities-bg-1.jpg" alt="Отчёт" width="711" height="460">
+                </picture>
+              </div>
+              <button class="btn btn-reset primary-btn opportunities__content-btn" type="button">
+                Попробовать бесплатно
+              </button>
+            </div>
+          </div>
+        </li>
+        <li class="opportunities__accordion accordion-js">
+          <button class="btn-reset opportunities__accordion-trigger accordion-trigger-js" type="button" aria-expanded="false">
+            <span class="opportunities__accordion-header">
+              Товарная аналитика
+            </span>
+            <span class="opportunities__accordion-icon"></span>
+          </button>
+          <div class="opportunities__accordion-content accordion-content-js" aria-hidden="true">
+            <div class="opportunities__tab-content">
+              <h3 class="third-title opportunities__content-title">
+                Инструменты для&nbsp;товарной аналитики
+              </h3>
+              <ul class="list-reset opportunities__content-list">
+                <li class="text opportunities__content-item">
+                  Сводка продаж по&nbsp;артикулам и&nbsp;размерам
+                </li>
+                <li class="text opportunities__content-item">
+                  ABC-анализ ассортимента
+                </li>
+                <li class="text opportunities__content-item">
+                  Управление себестоимость, ценами, скидками
+                </li>
+                <li class="text opportunities__content-item">
+                  Контроль остатков
+                </li>
+                <li class="text opportunities__content-item">
+                  Работа с&nbsp;поставками Wildberries
+                </li>
+                <li class="text opportunities__content-item">
+                  Расчет поставок
+                </li>
+              </ul>
+              <div class="opportunities__tab-img">
+                <picture>
+                  <source srcset="./images/capabilities-bg-2.webp" type="image/webp">
+                  <img src="./images/capabilities-bg-2.jpg" alt="Отчёт" width="700" height="450" loading="lazy">
+                </picture>
+              </div>
+              <button class="btn btn-reset primary-btn opportunities__content-btn" type="button">
+                Попробовать бесплатно
+              </button>
+            </div>
+          </div>
+        </li>
+        <li class="opportunities__accordion accordion-js">
+          <button class="btn-reset opportunities__accordion-trigger accordion-trigger-js" type="button" aria-expanded="false">
+            <span class="opportunities__accordion-header">
+              Аналитика внутренней рекламы
+            </span>
+            <span class="opportunities__accordion-icon"></span>
+          </button>
+          <div class="opportunities__accordion-content accordion-content-js" aria-hidden="true">
+            <div class="opportunities__tab-content">
+              <h3 class="third-title opportunities__content-title">
+                Инструменты для аналитики внутренней рекламы на маркетплейсах
+              </h3>
+              <ul class="list-reset opportunities__content-list">
+                <li class="text opportunities__content-item">
+                  Аналитика рекламы
+                </li>
+                <li class="text opportunities__content-item">
+                  Учет расходов по&nbsp;рекламным кампаниям
+                </li>
+                <li class="text opportunities__content-item">
+                  Список рекламных кампаний с&nbsp;детальной информацией в&nbsp;одном месте
+                </li>
+                <li class="text opportunities__content-item">
+                  Определение реальной рекламной ставки в&nbsp;поиске Wildberries
+                </li>
+              </ul>
+              <div class="opportunities__tab-img">
+                <picture>
+                  <source srcset="./images/capabilities-bg-3.webp" type="image/webp">
+                  <img src="./images/capabilities-bg-3.jpg" alt="Отчёт" width="700" height="450" loading="lazy">
+                </picture>
+              </div>
+              <button class="btn btn-reset primary-btn opportunities__content-btn" type="button">
+                Попробовать бесплатно
+              </button>
+            </div>
+          </div>
+        </li>
+        <li class="opportunities__accordion accordion-js">
+          <button class="btn-reset opportunities__accordion-trigger accordion-trigger-js" type="button" aria-expanded="false">
+            <span class="opportunities__accordion-header">
+              Статистика
+            </span>
+            <span class="opportunities__accordion-icon"></span>
+          </button>
+          <div class="opportunities__accordion-content accordion-content-js" aria-hidden="true">
+            <div class="opportunities__tab-content">
+              <h3 class="third-title opportunities__content-title">
+                Инструменты для статистики
+              </h3>
+              <ul class="list-reset opportunities__content-list">
+                <li class="text opportunities__content-item">
+                  Дашборд
+                </li>
+                <li class="text opportunities__content-item">
+                  Список всех заказов
+                </li>
+                <li class="text opportunities__content-item">
+                  География заказов и&nbsp;продаж
+                </li>
+                <li class="text opportunities__content-item">
+                  Сравнение статистики по&nbsp;периодам
+                </li>
+                <li class="text opportunities__content-item">
+                  Сводная информация о&nbsp;заказах по&nbsp;времени
+                </li>
+              </ul>
+              <div class="opportunities__tab-img">
+                <picture>
+                  <source srcset="./images/capabilities-bg-4.webp" type="image/webp">
+                  <img src="./images/capabilities-bg-4.jpg" alt="Отчёт" width="700" height="450" loading="lazy">
+                </picture>
+              </div>
+              <button class="btn btn-reset primary-btn opportunities__content-btn" type="button">
+                Попробовать бесплатно
+              </button>
+            </div>
+          </div>
+        </li>
+        <li class="opportunities__accordion accordion-js">
+          <button class="btn-reset opportunities__accordion-trigger accordion-trigger-js" type="button" aria-expanded="false">
+            <span class="opportunities__accordion-header">
+              Инструменты
+            </span>
+            <span class="opportunities__accordion-icon"></span>
+          </button>
+          <div class="opportunities__accordion-content accordion-content-js" aria-hidden="true">
+            <div class="opportunities__tab-content">
+              <h3 class="third-title opportunities__content-title">
+                Дополнительные инструменты
+              </h3>
+              <ul class="list-reset opportunities__content-list">
+                <li class="text opportunities__content-item">
+                  Калькулятор unit экономики
+                </li>
+                <li class="text opportunities__content-item">
+                  Калькулятор участия в&nbsp;акциях Wildberries
+                </li>
+              </ul>
+              <div class="opportunities__tab-img">
+                <picture>
+                  <source srcset="./images/capabilities-bg-5.webp" type="image/webp">
+                  <img src="./images/capabilities-bg-5.jpg" alt="Отчёт" width="700" height="450" loading="lazy">
+                </picture>
+              </div>
+              <button class="btn btn-reset primary-btn opportunities__content-btn" type="button">
+                Попробовать бесплатно
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+    <section class="offer">
+  <div class="container">
+    <div class="try offer__try">
+      <div class="offer__try-content">
+        <h2 class="second-title offer__try-title">
+          Начните экономить своё время
+        </h2>
+        <div class="sm-text try__text">
+          3-дневный пробный период с&nbsp;неограниченным доступом ко&nbsp;всем возможностям
+        </div>
+        <form class="try__form">
+          <label class="try__form-label">
+            <input type="email" class="try__form-input" placeholder="Введите ваш email">
+          </label>
+          <button class="btn btn-reset primary-btn try__form-btn" type="submit">
+            Попробовать
+          </button>
+        </form>
+      </div>
+      <div class="offer__try-img-block">
+        <picture class="offer__try-picture">
+          <source media="(max-width: 1050px)" srcset="./images/try-sm.webp" type="image/webp">
+          <source media="(max-width: 1050px)" srcset="./images/try-sm.png">
+          <source srcset="./images/try-bg.webp" type="image/webp">
+          <img class="offer__try-img" src="./images/try-bg.png" alt="Продавец на фоне будильника" width="485"
+            height="374">
+        </picture>
+      </div>
+      <img class="try-deco-1" src="./images/svg/try-deco-1.svg" alt="Декор">
+      <picture class="try-deco-picture-2">
+        <source media="(max-width: 540px)" srcset="./images/svg/try-deco-sm-2.svg">
+        <img class="try-deco-2" src="./images/svg/try-deco-2.svg" alt="Декор">
+      </picture>
+    </div>
+  </div>
+</section>
+
+    <section class="reports">
+  <div class="container reports__container">
+    <h2 class="second-title reports__title">
+      Собираем единые отчёты по&nbsp;всем вашим магазинам
+    </h2>
+    <span class="bg-text reports__subtitle">
+      C&nbsp;Mpassistant вы сможете:
+    </span>
+    <div class="reports__block">
+      <ul class="list-reset reports__list">
+        <li class="reports__item">
+          <svg class="reports__item-svg">
+            <use xlink:href="#check-mark-circle"></use>
+          </svg>
+          <span class="reports__item-text bg-text">
+            Сможете видеть прибыль по&nbsp;всем магазинам и&nbsp;маркетплейсам в&nbsp;одном месте
+          </span>
+        </li>
+        <li class="reports__item">
+          <svg class="reports__item-svg">
+            <use xlink:href="#check-mark-circle"></use>
+          </svg>
+          <span class="reports__item-text bg-text">
+            Не&nbsp;потратите время на&nbsp;сбор данных из&nbsp;нескольких кабинетов или маркетплейсов
+          </span>
+        </li>
+        <li class="reports__item">
+          <svg class="reports__item-svg">
+            <use xlink:href="#check-mark-circle"></use>
+          </svg>
+          <span class="reports__item-text bg-text">
+            Добавите любое количество магазинов
+          </span>
+        </li>
+      </ul>
+      <div class="reports__img-block">
+        <picture>
+          <source media="(max-width:540px)" srcset="./images/reports-sm.webp" type="image/webp">
+          <source media="(max-width:540px)" srcset="./images/reports-sm.png">
+          <source srcset="./images/reports-bg.webp" type="image/webp">
+          <img src="./images/reports-bg.png" alt="Сеть магазинов" width="690" height="416">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="why" id="why">
+  <div class="container why__container">
+    <h2 class="second-title why__title">
+      Почему выбирают Mpassistant
+    </h2>
+    <div class="why__card-block">
+      <div class="why__card">
+        <h3 class="third-title why__card-title why__card-title--1">
+          <img class="why__card-img why__card-img--1" src="./images/svg/why-accuracy.svg" alt="Мишень" width="35" height="35">
+          Точность данных
+        </h3>
+        <div class="text why__card-text">
+          Данные в&nbsp;отчётах сервиса полностью совпадает с&nbsp;данными ваших магазинов на&nbsp;маркетплейсах.
+        </div>
+      </div>
+      <div class="why__card">
+        <h3 class="third-title why__card-title why__card-title--2">
+          <img class="why__card-img why__card-img--2" src="./images/svg/why-analytics.svg" alt="Монитор" width="55" height="34">
+          Большой функционал
+        </h3>
+        <div class="text why__card-text">
+          Полный набор инструментов для&nbsp;внутренней аналитики для&nbsp;Wildberries и&nbsp;Ozon. Более 10&nbsp;полезных отчётов
+          с&nbsp;удобными настраиваемыми фильтрами и&nbsp;параметрами.
+        </div>
+      </div>
+      <div class="why__card">
+        <h3 class="third-title why__card-title why__card-title--3">
+          <img class="why__card-img why__card-img--3" src="./images/svg/why-manual.svg" alt="Книга" width="40" height="32">
+          Лёгкость освоения
+        </h3>
+        <div class="text why__card-text">
+          Наши отчёты просты и&nbsp;удобны. Все&nbsp;отчёты имеют подробные инструкции и&nbsp;видео, помогающие легко читать
+          их&nbsp;и&nbsp;использовать.
+        </div>
+      </div>
+      <div class="why__card">
+        <h3 class="third-title why__card-title why__card-title--4">
+          <img class="why__card-img why__card-img--4" src="./images/svg/why-experience.svg" alt="Человек" width="34" height="45">
+          Подходит всем
+        </h3>
+        <div class="text why__card-text">
+          Mpassistant создан селлерами для&nbsp;селлеров. Наш опыт в&nbsp;товарном бизнесе и&nbsp;разработке&nbsp;IT систем
+          позволил создать полезный и&nbsp;удобный продукт, поэтому он&nbsp;подойдёт как для новичков, так&nbsp;и&nbsp;для
+          опытных селлеров.
+        </div>
+      </div>
+      <div class="why__card">
+        <h3 class="third-title why__card-title why__card-title--5">
+          <img class="why__card-img why__card-img--5" src="./images/svg/why-confidential-document.svg" alt="Замок" width="36" height="42">
+          Конфиденциальность
+        </h3>
+        <div class="text why__card-text">
+          Ваша конфиденциальность для&nbsp;нас&nbsp;самый главный приоритет. Все ваши данные надёжно сохранены, а&nbsp;информация
+          об&nbsp;этом записана в&nbsp;договоре-оферте. По&nbsp;желанию можем заключить дополнительное соглашение (NDA).
+        </div>
+      </div>
+      <div class="why__card">
+        <h3 class="third-title why__card-title why__card-title--6">
+          <img class="why__card-img why__card-img--6" src="./images/svg/why-customer-service.svg" alt="Гарнитура" width="39" height="38">
+          Служба заботы
+        </h3>
+        <div class="text why__card-text">
+          Наша служба заботы готова решить практически любые вопросы и&nbsp;в&nbsp;режиме 24/7.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="offer offer-free">
+  <div class="container">
+    <div class="try offer__try offer-free__try">
+      <div class="offer__try-content offer-free__try-content">
+        <h2 class="second-title offer__try-title">
+          Попробуйте бесплатно
+        </h2>
+        <div class="sm-text try__text">
+          3-дневный пробный период с&nbsp;неограниченным доступом ко&nbsp;всем возможностям
+        </div>
+        <form class="try__form">
+          <label class="try__form-label">
+            <input type="email" class="try__form-input" placeholder="Введите ваш email">
+          </label>
+          <button class="btn btn-reset primary-btn try__form-btn" type="submit">
+            Попробовать
+          </button>
+        </form>
+      </div>
+      <div class="offer-free__try-img-block">
+        <picture class="offer-free__try-picture">
+          <source media="(max-width: 1050px)" srcset="./images/try-free-sm.webp" type="image/webp">
+          <source media="(max-width: 1050px)" srcset="./images/try-free-sm.png">
+          <source media="(max-width: 1490px)" srcset="./images/try-free-md.webp" type="image/webp">
+          <source media="(max-width: 1490px)" srcset="./images/try-free-md.png">
+          <source srcset="./images/try-free-bg.webp" type="image/webp">
+          <img class="offer-free__try-img" src="./images/try-free-bg.png" alt="Продавец на фоне посылок" width="577"
+            height="455">
+        </picture>
+      </div>
+      <img class="try-deco-1" src="./images/svg/try-deco-1.svg" alt="Декор">
+      <picture class="try-deco-picture-2 try-free-deco-picture-2">
+        <source media="(max-width: 540px)" srcset="./images/svg/try-deco-sm-2.svg">
+        <img class="try-deco-2 try-free-deco-2" src="./images/svg/try-deco-2.svg" alt="Декор">
+      </picture>
+    </div>
+  </div>
+</section>
+
+    <section class="tariff" id="tariff">
+  <div class="container tariff__container">
+    <h2 class="second-title tariff__title">
+      Выберите тариф
+    </h2>
+    <div class="tariff__tabs-block tabs-block">
+      <div class="swiper mobile-swiper" data-mobile="false">
+        <div class="mobile-wrapper swiper-wrapper tariff__tabs-list tabs">
+          <div class="swiper-slide mobile-slide-auto">
+            <button class="btn btn-reset tariff__tabs-btn tariff__tabs-btn--active tabs__btn" type="button" data-tab="tariff-tab-1">
+              1&nbsp;месяц
+            </button>
+          </div>
+          <div class="swiper-slide mobile-slide-auto">
+            <button class="btn btn-reset tariff__tabs-btn tabs__btn" type="button" data-tab="tariff-tab-2">
+              3&nbsp;месяца
+            </button>
+          </div>
+          <div class="swiper-slide mobile-slide-auto">
+            <button class="btn btn-reset tariff__tabs-btn tabs__btn" type="button" data-tab="tariff-tab-3">
+              6&nbsp;месяцев
+            </button>
+          </div>
+          <div class="swiper-slide mobile-slide-auto">
+            <button class="btn btn-reset tariff__tabs-btn tabs__btn" type="button" data-tab="tariff-tab-4">
+              12&nbsp;месяцев
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="tariff__tab tariff__tab--active tab" id="tariff-tab-1">
+        <div class="tariff__tab-card">
+          <h3 class="third-title tariff__tab-title tariff__tab-start">
+            Стартовый
+          </h3>
+          <span class="tariff__tab-price">
+            Бесплатно
+          </span>
+          <button class="btn btn-reset primary-btn tariff__tab-btn tariff__primary-tab-btn" type="button">
+            Попробовать
+          </button>
+          <button class="btn btn-reset secondary-btn tariff__tab-btn" type="button">
+            Подробнее
+            <svg class="tariff__tab-btn-svg">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="tariff__tab-card">
+          <h3 class="third-title tariff__tab-title tariff__tab-start">
+            Стартовый +
+          </h3>
+          <span class="tariff__tab-price">
+            2&nbsp;490&nbsp;₽
+          </span>
+          <button class="btn btn-reset primary-btn tariff__tab-btn tariff__primary-tab-btn" type="button">
+            Попробовать
+          </button>
+          <button class="btn btn-reset secondary-btn tariff__tab-btn" type="button">
+            Подробнее
+            <svg class="tariff__tab-btn-svg">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="tariff__tab-card">
+          <h3 class="third-title tariff__tab-title tariff__tab-start">
+            Профи
+          </h3>
+          <span class="tariff__tab-price">
+            6&nbsp;990&nbsp;₽
+          </span>
+          <button class="btn btn-reset primary-btn tariff__tab-btn tariff__primary-tab-btn" type="button">
+            Попробовать
+          </button>
+          <button class="btn btn-reset secondary-btn tariff__tab-btn" type="button">
+            Подробнее
+            <svg class="tariff__tab-btn-svg">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="tariff__tab tab" id="tariff-tab-2">
+        <div class="tariff__tab-card">
+          <h3 class="third-title tariff__tab-title tariff__tab-start">
+            Стартовый
+          </h3>
+          <span class="tariff__tab-price">
+            Бесплатно
+          </span>
+          <button class="btn btn-reset primary-btn tariff__tab-btn tariff__primary-tab-btn" type="button">
+            Попробовать
+          </button>
+          <button class="btn btn-reset secondary-btn tariff__tab-btn" type="button">
+            Подробнее
+            <svg class="tariff__tab-btn-svg">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="tariff__tab-card">
+          <span class="tariff__tab-discount">&mdash;&nbsp;10%</span>
+          <h3 class="third-title tariff__tab-title">
+            Стартовый +
+          </h3>
+          <span class="tariff__tab-monthly-payment">
+            2&nbsp;241&nbsp;₽/мес
+          </span>
+          <span class="tariff__tab-price">
+            6&nbsp;723&nbsp;₽
+          </span>
+          <button class="btn btn-reset primary-btn tariff__tab-btn tariff__primary-tab-btn" type="button">
+            Попробовать
+          </button>
+          <button class="btn btn-reset secondary-btn tariff__tab-btn" type="button">
+            Подробнее
+            <svg class="tariff__tab-btn-svg">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="tariff__tab-card">
+          <span class="tariff__tab-discount">&mdash;&nbsp;10%</span>
+          <h3 class="third-title tariff__tab-title">
+            Профи
+          </h3>
+          <span class="tariff__tab-monthly-payment">
+            6&nbsp;291&nbsp;₽/мес
+          </span>
+          <span class="tariff__tab-price">
+            18&nbsp;873&nbsp;₽
+          </span>
+          <button class="btn btn-reset primary-btn tariff__tab-btn tariff__primary-tab-btn" type="button">
+            Попробовать
+          </button>
+          <button class="btn btn-reset secondary-btn tariff__tab-btn" type="button">
+            Подробнее
+            <svg class="tariff__tab-btn-svg">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="tariff__tab tab" id="tariff-tab-3">
+        <div class="tariff__tab-card">
+          <h3 class="third-title tariff__tab-title tariff__tab-start">
+            Стартовый
+          </h3>
+          <span class="tariff__tab-price">
+            Бесплатно
+          </span>
+          <button class="btn btn-reset primary-btn tariff__tab-btn tariff__primary-tab-btn" type="button">
+            Попробовать
+          </button>
+          <button class="btn btn-reset secondary-btn tariff__tab-btn" type="button">
+            Подробнее
+            <svg class="tariff__tab-btn-svg">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="tariff__tab-card">
+          <span class="tariff__tab-discount">&mdash;&nbsp;15%</span>
+          <h3 class="third-title tariff__tab-title">
+            Стартовый +
+          </h3>
+          <span class="tariff__tab-monthly-payment">
+            2&nbsp;116&nbsp;₽/мес
+          </span>
+          <span class="tariff__tab-price">
+            12&nbsp;696&nbsp;₽
+          </span>
+          <button class="btn btn-reset primary-btn tariff__tab-btn tariff__primary-tab-btn" type="button">
+            Попробовать
+          </button>
+          <button class=" btn btn-reset secondary-btn tariff__tab-btn" type="button">
+            Подробнее
+            <svg class="tariff__tab-btn-svg">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="tariff__tab-card">
+          <span class="tariff__tab-discount">&mdash;&nbsp;15%</span>
+          <h3 class="third-title tariff__tab-title">
+            Профи
+          </h3>
+          <span class="tariff__tab-monthly-payment">
+            5&nbsp;941&nbsp;₽/мес
+          </span>
+          <span class="tariff__tab-price">
+            35&nbsp;646&nbsp;₽
+          </span>
+          <button class="btn btn-reset primary-btn tariff__tab-btn tariff__primary-tab-btn" type="button">
+            Попробовать
+          </button>
+          <button class="btn btn-reset secondary-btn tariff__tab-btn" type="button">
+            Подробнее
+            <svg class="tariff__tab-btn-svg">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="tariff__tab tab" id="tariff-tab-4">
+        <div class="tariff__tab-card">
+          <h3 class="third-title tariff__tab-title tariff__tab-start">
+            Стартовый
+          </h3>
+          <span class="tariff__tab-price">
+            Бесплатно
+          </span>
+          <button class="btn btn-reset primary-btn tariff__tab-btn tariff__primary-tab-btn" type="button">
+            Попробовать
+          </button>
+          <button class="btn btn-reset secondary-btn tariff__tab-btn" type="button">
+            Подробнее
+            <svg class="tariff__tab-btn-svg">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="tariff__tab-card">
+          <span class="tariff__tab-discount">&mdash;&nbsp;25%</span>
+          <h3 class="third-title tariff__tab-title">
+            Стартовый +
+          </h3>
+          <span class="tariff__tab-monthly-payment">
+            1&nbsp;867&nbsp;₽/мес
+          </span>
+          <span class="tariff__tab-price">
+            22&nbsp;404&nbsp;₽
+          </span>
+          <button class="btn btn-reset primary-btn tariff__tab-btn tariff__primary-tab-btn" type="button">
+            Попробовать
+          </button>
+          <button class="btn btn-reset secondary-btn tariff__tab-btn" type="button">
+            Подробнее
+            <svg class="tariff__tab-btn-svg">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="tariff__tab-card">
+          <span class="tariff__tab-discount">&mdash;&nbsp;25%</span>
+          <h3 class="third-title tariff__tab-title">
+            Профи
+          </h3>
+          <span class="tariff__tab-monthly-payment">
+            5&nbsp;242&nbsp;₽/мес
+          </span>
+          <span class="tariff__tab-price">
+            62&nbsp;904&nbsp;₽
+          </span>
+          <button class="btn btn-reset primary-btn tariff__tab-btn tariff__primary-tab-btn" type="button">
+            Попробовать
+          </button>
+          <button class="btn btn-reset secondary-btn tariff__tab-btn" type="button">
+            Подробнее
+            <svg class="tariff__tab-btn-svg">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="tariff__novice">
+      <div class="tariff__novice-content">
+        <h3 class="third-title tariff__novice-title">
+          Начинающим селлерам с&nbsp;выручкой
+        </h3>
+        <span class="tariff__novice-revenue">
+          до&nbsp;200&nbsp;000&nbsp;₽/мес
+        </span>
+        <span class="tariff__novice-price">
+          Бесплатно
+        </span>
+        <div class="tariff__novice-btns">
+          <button class="btn btn-reset primary-btn tariff__tab-btn tariff__primary-tab-btn" type="button">
+            Попробовать
+          </button>
+          <button class="btn btn-reset secondary-btn tariff__tab-btn" type="button">
+            Подробнее
+            <svg class="tariff__tab-btn-svg">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="tariff__novice-img-block">
+        <picture class="tariff__novice-picture">
+          <source media="(max-width: 1050px)" srcset="./images/tariff-novice-sm.webp" type="image/webp">
+          <source media="(max-width: 1050px)" srcset="./images/tariff-novice-sm.png">
+          <source srcset="./images/tariff-novice-bg.webp" type="image/webp">
+          <img class="tariff__novice-img" src="./images/tariff-novice-bg.png" alt="Начинающий продавец на фоне посылок"
+            width="884" height="394">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="reviews">
+  <div class="container reviews__container">
+    <div class="swiper reviews-swiper">
+      <div class="reviews__swiper-top">
+        <h2 class="second-title reviews__title">
+          Отзывы
+        </h2>
+        <div class="reviews__arrow-block">
+          <button class="btn-reset swiper-button-prev reviews-swiper-button-prev" type="button">
+          </button>
+          <button class="btn-reset swiper-button-next reviews-swiper-button-next" type="button">
+          </button>
+        </div>
+      </div>
+      <div class="swiper-wrapper reviews-swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="reviews__card">
+            <svg class="reviews__card-deco">
+              <use xlink:href="#quote"></use>
+            </svg>
+            <div class="text reviews__card-text">
+              <p class="reviews__card-paragraph">
+                Изначально нашёл сервис в&nbsp;поиске Яндекса, когда искал калькулятор unit-экономики товара.
+                Калькулятор
+                полностью устроил и&nbsp;решил пользоваться самим сайтом.
+              </p>
+              <p class="reviews__card-paragraph">
+                К&nbsp;тому&nbsp;же это было для меня
+                бесплатно,
+                так как проходил по&nbsp;условиям бесплатного доступа: оборот до&nbsp;200т.р в&nbsp;месяц.
+              </p>
+              <p class="reviews__card-paragraph">
+                Этого
+                не&nbsp;встретить на&nbsp;других сайтах, это возможность развиваться на&nbsp;ранних этапах, без вложения
+                огромных сумм для доступа к&nbsp;подобным сайтам.
+              </p>
+              <p class="reviews__card-paragraph">
+                Радует поддержка, получал ответы на&nbsp;всевопросы, выслушивали все мои рекомендации по&nbsp;улучшению
+                сервиса. Какие‑то из&nbsp;них уже внедрены! Сервис ориентирован на&nbsp;аналитику своего магазина,
+                продаж.
+                Удобно анализировать финансовую составляющую.
+              </p>
+              <p class="reviews__card-paragraph">
+                Бывают акции, когда можно хорошо сэкономить на&nbsp;подписке.
+                Желаю сервису развития и&nbsp;успехов!
+              </p>
+            </div>
+            <div class="reviews__card-bottom">
+              <button class="btn-reset reviews__btn reviews__btn--active" type="button">
+                Читать полностью
+                <svg class="reviews__check-mark">
+                  <use xlink:href="#check-mark"></use>
+                </svg>
+              </button>
+              <span class="reviews__card-author">
+                Алексей
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="reviews__card">
+            <svg class="reviews__card-deco">
+              <use xlink:href="#quote"></use>
+            </svg>
+            <div class="text reviews__card-text">
+              <p class="reviews__card-paragraph">
+                Функционал сервиса, тот что есть&nbsp;&mdash; полностью устраивает. Хочется ещё автобиддер
+                по&nbsp;ставкам
+                в&nbsp;рекламных компаниях и&nbsp;цены вам не&nbsp;будет!
+              </p>
+            </div>
+            <div class="reviews__card-bottom">
+              <button class="btn-reset reviews__btn" type="button">
+                Читать полностью
+                <svg class="reviews__check-mark">
+                  <use xlink:href="#check-mark"></use>
+                </svg>
+              </button>
+              <span class="reviews__card-author">
+                Владислав
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="reviews__card">
+            <svg class="reviews__card-deco">
+              <use xlink:href="#quote"></use>
+            </svg>
+            <div class="text reviews__card-text">
+              <p class="reviews__card-paragraph">
+                Изначально нашёл сервис в&nbsp;поиске Яндекса, когда искал калькулятор unit-экономики товара.
+                Калькулятор
+                полностью устроил и&nbsp;решил пользоваться самим сайтом.
+              </p>
+              <p class="reviews__card-paragraph">
+                К&nbsp;тому&nbsp;же это было для меня
+                бесплатно,
+                так как проходил по&nbsp;условиям бесплатного доступа: оборот до&nbsp;200т.р в&nbsp;месяц.
+              </p>
+              <p class="reviews__card-paragraph">
+                Этого
+                не&nbsp;встретить на&nbsp;других сайтах, это возможность развиваться на&nbsp;ранних этапах, без вложения
+                огромных сумм для доступа к&nbsp;подобным сайтам.
+              </p>
+              <p class="reviews__card-paragraph">
+                Радует поддержка, получал ответы на&nbsp;всевопросы, выслушивали все мои рекомендации по&nbsp;улучшению
+                сервиса. Какие‑то из&nbsp;них уже внедрены! Сервис ориентирован на&nbsp;аналитику своего магазина,
+                продаж.
+                Удобно анализировать финансовую составляющую.
+              </p>
+              <p class="reviews__card-paragraph">
+                Бывают акции, когда можно хорошо сэкономить на&nbsp;подписке.
+                Желаю сервису развития и&nbsp;успехов!
+              </p>
+            </div>
+            <div class="reviews__card-bottom">
+              <button class="btn-reset reviews__btn reviews__btn--active" type="button">
+                Читать полностью
+                <svg class="reviews__check-mark">
+                  <use xlink:href="#check-mark"></use>
+                </svg>
+              </button>
+              <span class="reviews__card-author">
+                Алексей
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="reviews__card">
+            <svg class="reviews__card-deco">
+              <use xlink:href="#quote"></use>
+            </svg>
+            <div class="text reviews__card-text">
+              <p class="reviews__card-paragraph">
+                Функционал сервиса, тот что есть&nbsp;&mdash; полностью устраивает. Хочется ещё автобиддер
+                по&nbsp;ставкам
+                в&nbsp;рекламных компаниях и&nbsp;цены вам не&nbsp;будет!
+              </p>
+            </div>
+            <div class="reviews__card-bottom">
+              <button class="btn-reset reviews__btn" type="button">
+                Читать полностью
+                <svg class="reviews__check-mark">
+                  <use xlink:href="#check-mark"></use>
+                </svg>
+              </button>
+              <span class="reviews__card-author">
+                Владислав
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination reviews-swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+    <section class="questions">
+  <div class="container questions__container">
+    <h2 class="second-title questions__title">
+      Часто задаваемые вопросы
+    </h2>
+    <span class="bg-text questions__subtitle">
+      Собрали ответы на&nbsp;часто задаваемые вопросы от&nbsp;вас
+    </span>
+    <div class="questions__block">
+      <ul class="list-reset questions__list">
+        <li class="accordion accordion-js">
+          <button class="btn-reset accordion__trigger accordion-trigger-js" type="button" aria-expanded="false">
+            <span class="accordion__header">
+              Чем вы&nbsp;отличаетесь от&nbsp;Mpstats и&nbsp;других систем аналитики?
+            </span>
+            <span class="accordion__icon">
+            </span>
+          </button>
+          <div class="accordion__content accordion-content-js" aria-hidden="true">
+            <p class="accordion__text">
+              Мы&nbsp;специализируемся на&nbsp;внутренней финансовой аналитике, поэтому данные у&nbsp;нас более точные
+              и&nbsp;полезные. Другие сервисы аналитики обычно специализируются на&nbsp;внешнем анализе продаж всех
+              поставщиков и&nbsp;берут данные из&nbsp;открытых источников. Мы&nbsp;же собираем данные только
+              по&nbsp;вашим
+              кабинетам, по&nbsp;тем доступам, которые вы&nbsp;нам предоставили.
+            </p>
+          </div>
+        </li>
+        <li class="accordion accordion-js">
+          <button class="btn-reset accordion__trigger accordion-trigger-js" type="button" aria-expanded="false">
+            <span class="accordion__header">
+              Сколько я&nbsp;могу пользоваться своими данными?
+            </span>
+            <span class="accordion__icon">
+            </span>
+          </button>
+          <div class="accordion__content accordion-content-js" aria-hidden="true">
+            <p class="accordion__text">
+              Вы&nbsp;можете пользоваться своими данными в&nbsp;любое время, пока у&nbsp;вас активен один
+              из&nbsp;тарифов.
+            </p>
+          </div>
+        </li>
+        <li class="accordion accordion-js">
+          <button class="btn-reset accordion__trigger accordion-trigger-js" type="button" aria-expanded="false">
+            <span class="accordion__header">
+              Сколько времени занимает создание отчетов?
+            </span>
+            <span class="accordion__icon">
+            </span>
+          </button>
+          <div class="accordion__content accordion-content-js" aria-hidden="true">
+            <p class="accordion__text">
+              При первичной загрузке вашего магазина первые отчеты можно уже смотреть через 15-30&nbsp;минут, после
+              добавления ключа.
+            </p>
+          </div>
+        </li>
+        <li class="accordion accordion-js">
+          <button class="btn-reset accordion__trigger accordion-trigger-js" type="button" aria-expanded="false">
+            <span class="accordion__header">
+              В&nbsp;чем удобство вашей аналитики?
+            </span>
+            <span class="accordion__icon">
+            </span>
+          </button>
+          <div class="accordion__content accordion-content-js" aria-hidden="true">
+            <p class="accordion__text">
+              Аналитика в&nbsp;нашем сервисе показывает достоверную информацию о&nbsp;Вашем бизнесе в&nbsp;цифрах
+              с&nbsp;разных сторон: финансовые и&nbsp;товарные. На&nbsp;все время пользования у&nbsp;вас есть
+              возможность
+              использовать нашу поддержку как техническую, так и&nbsp;консультационную.
+            </p>
+          </div>
+        </li>
+        <li class="accordion accordion-js">
+          <button class="btn-reset accordion__trigger accordion-trigger-js" type="button" aria-expanded="false">
+            <span class="accordion__header">
+              Насколько точные данные получаются по&nbsp;API?
+            </span>
+            <span class="accordion__icon">
+            </span>
+          </button>
+          <div class="accordion__content accordion-content-js" aria-hidden="true">
+            <p class="accordion__text">
+              У&nbsp;каждого маркетплейса есть свои показатели по&nbsp;погрешности. В&nbsp;целом при получении
+              финансовых
+              отчетов погрешность меньше одного процента, а&nbsp;оперативные данные (список заказов, отказов
+              и&nbsp;т.д.)
+              в&nbsp;среднем около 15%. Со&nbsp;своей стороны мы&nbsp;постарались минимизировать расхождения
+              и&nbsp;учли
+              многоэтапную перепроверку данных, чтоб вы&nbsp;смогли получить самые точные данные.
+            </p>
+          </div>
+        </li>
+        <li class="accordion accordion-js">
+          <button class="btn-reset accordion__trigger accordion-trigger-js" type="button" aria-expanded="false">
+            <span class="accordion__header">
+              Что делать если маркетплейс изменит API?
+            </span>
+            <span class="accordion__icon">
+            </span>
+          </button>
+          <div class="accordion__content accordion-content-js" aria-hidden="true">
+            <p class="accordion__text">
+              Вам ничего делать не&nbsp;нужно. Вся забота по&nbsp;контролю работы и&nbsp;изменений лежит полностью
+              на&nbsp;нас. Мы&nbsp;следим за&nbsp;всеми новостями от&nbsp;маркетплейсов, которые касаются
+              их&nbsp;работы,
+              а&nbsp;передовые системы мониторинга своевременно увидят и&nbsp;оповестят нас в&nbsp;случае сбоев.
+            </p>
+          </div>
+        </li>
+        <li class="accordion accordion-js">
+          <button class="btn-reset accordion__trigger accordion-trigger-js" type="button" aria-expanded="false">
+            <span class="accordion__header">
+              Безопасно&nbsp;ли передавать вам API ключи от&nbsp;кабинета?
+            </span>
+            <span class="accordion__icon">
+            </span>
+          </button>
+          <div class="accordion__content accordion-content-js" aria-hidden="true">
+            <p class="accordion__text">
+              Абсолютно. Мы&nbsp;очень дорожим репутацией, поэтому серьезно относимся к&nbsp;безопасности данных. Ваши
+              данные надежно хранятся в&nbsp;самых современных дата-центрах на&nbsp;территории РФ. Доступ
+              к&nbsp;оборудованию имеет ограниченный круг лиц. При необходимости мы&nbsp;готовы заключить с&nbsp;вами
+              дополнительное соглашение об&nbsp;неразглашении (NDA).
+            </p>
+          </div>
+        </li>
+      </ul>
+      <div class="try questions__try">
+        <div class="questions__try-content">
+          <h3 class="third-title questions__try-title">
+            Повысьте эффективность маркетинга и&nbsp;продаж с&nbsp;Mpassistant
+          </h3>
+          <div class="questions__try-text">
+            3-дневный пробный период с&nbsp;неограниченным доступом ко&nbsp;всем возможностям
+          </div>
+          <form class="try__form questions__try-form">
+            <label class="try__form-label questions__try-label">
+              <input type="email" class="try__form-input questions__try-input" placeholder="Введите ваш email">
+            </label>
+            <button class="btn btn-reset primary-btn try__form-btn questions__try-btn" type="submit">
+              Попробовать
+            </button>
+          </form>
+        </div>
+        <div class="questions__try-img-block">
+          <picture class="questions__try-picture">
+            <source media="(max-width: 1050px)" srcset="./images/questions-sm.webp" type="image/webp">
+            <source media="(max-width: 1050px)" srcset="./images/questions-sm.png">
+            <source srcset="./images/questions-bg.webp" type="image/webp">
+            <img class="questions__try-img" src="./images/questions-bg.png" alt="Продавец на фоне графиков продаж"
+              width="406" height="317">
+          </picture>
+        </div>
+        <img class="questions-deco-1" src="./images/svg/questions-deco-1.svg" alt="Декор">
+        <picture class="questions-deco-picture-2">
+          <source media="(max-width: 540px)" srcset="./images/svg/questions-deco-sm-2.svg">
+          <img class="questions-deco-2" src="./images/svg/questions-deco-2.svg" alt="Декор">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <section class="footer">
+  <div class="container footer__container">
+    <div class="footer__top">
+      <img class="logo footer__top-logo" src="./images/svg/logo.svg" alt="Логотип" width="260" height="26">
+      <div class="about-subtitle footer__top-subtitle">
+        Аналитика и&nbsp;оцифровка продаж
+        <span class="about-subtitle__wb">
+          Wildberries
+        </span>
+        и&nbsp;
+        <span class="about-subtitle__ozon">
+          Ozon
+        </span>
+      </div>
+      <div class="footer__top-social">
+        <a class="footer__social-link footer__vk" href="https://vk.com" target="_blank" aria-label="ВКонтакте">
+        </a>
+        <a class="footer__social-link footer__tg" href="https://t.me" target="_blank" aria-label="Telegram">
+        </a>
+        <a class="footer__social-link footer__youtube" href="https://youtube.com" target="_blank" aria-label="Youtube">
+        </a>
+      </div>
+    </div>
+    <div class="footer__nav">
+      <div class="footer__nav-service">
+        <h4 class="fourth-title footer__nav-title">
+          Сервис
+        </h4>
+        <ul class="list-reset footer__nav-list">
+          <li class="footer__nav-item">
+            <a href="#why" class="footer__nav-link">
+              Для кого
+            </a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="#opportunities" class="footer__nav-link">
+              Возможности
+            </a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="#tariff" class="footer__nav-link">
+              Тарифы
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__nav-clients">
+        <h4 class="fourth-title footer__nav-title">
+          Клиентам
+        </h4>
+        <ul class="list-reset footer__nav-list">
+          <li class="footer__nav-item" data-modal="modal-entrance">
+            <button class="btn-reset footer__nav-link">
+              Вход
+            </button>
+          </li>
+          <li class="footer__nav-item" data-modal="modal-reg">
+            <button class="btn-reset footer__nav-link">
+              Регистрация
+            </button>
+          </li>
+          <li class="footer__nav-item" data-modal="modal-recover">
+            <button class="btn-reset footer__nav-link">
+              Восстановления пароля
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__documents">
+        <h4 class="fourth-title footer__nav-title">
+          Документы
+        </h4>
+        <ul class="list-reset footer__nav-list">
+          <li class="footer__nav-item">
+            <a href="#" class="footer__nav-link">
+              Пользовательское соглашение
+            </a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="#" class="footer__nav-link">
+              Политика конфиденциальности
+            </a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="#" class="footer__nav-link">
+              Публичная оферта
+            </a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="#" class="footer__nav-link">
+              Использование cookie
+            </a>
+          </li>
+          <li class="footer__nav-item">
+            <a href="#" class="footer__nav-link">
+              Техническая поддержка
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <ul class="list-reset footer__payment-list">
+      <li class="footer__payment-item">
+        <picture>
+          <source srcset="./images/modulbank.webp" type="image/webp">
+          <img class="footer__payment-modulbank" src="./images/modulbank.png" alt="Модуль банк" width="156" height="42">
+        </picture>
+      </li>
+      <li class="footer__payment-item">
+        <picture>
+          <source srcset="./images/visa.webp" type="image/webp">
+          <img class="footer__payment-visa" src="./images/visa.png" alt="Visa" width="73" height="30">
+        </picture>
+      </li>
+      <li class="footer__payment-item">
+        <picture>
+          <source srcset="./images/mastercard.webp" type="image/webp">
+          <img class="footer__payment-master-card" src="./images/mastercard.png" alt="Master Card" width="49" height="30">
+        </picture>
+      </li>
+      <li class="footer__payment-item">
+        <picture>
+          <source srcset="./images/maestro.webp" type="image/webp">
+          <img class="footer__payment-maestro" src="./images/maestro.png" alt="Maestro" width="49" height="30">
+        </picture>
+      </li>
+      <li class="footer__payment-item">
+        <picture>
+          <source srcset="./images/mir.webp" type="image/webp">
+          <img class="footer__payment-mir" src="./images/mir.png" alt="Мир" width="79" height="22">
+        </picture>
+      </li>
+    </ul>
+    <div class="footer__bottom">
+      <span class="footer__bottom-copy">
+        © 2022–2023 Mpassistant
+      </span>
+      <span class="footer__bottom-info">
+        Информация, размещённая на&nbsp;сайте, не&nbsp;является публичной офертой
+      </span>
+    </div>
+  </div>
+</section>
+
+</body>
+
+</html>

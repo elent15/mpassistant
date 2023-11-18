@@ -1,3 +1,4 @@
+// модальное окно
 const modal = () => {
   const btns = Array.from(document.querySelectorAll(`[data-modal]`));
   const modals = Array.from(document.querySelectorAll('.modal'));

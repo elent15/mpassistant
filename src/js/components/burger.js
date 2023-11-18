@@ -1,3 +1,4 @@
+// бургер-меню
 const burger = () => {
   const burger = document.querySelector('.burger');
   const header = document.querySelector('.header__container');

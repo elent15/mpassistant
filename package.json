@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "dev": "gulp",
-    "build": "gulp --build"
+    "build": "gulp build"
   },
   "author": "Elena",
   "license": "ISC",
@@ -23,7 +23,6 @@
     "gulp-file-include": "^2.3.0",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-htmlclean": "^2.7.22",
-    "gulp-if": "^3.0.0",
     "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
@@ -32,7 +31,6 @@
     "gulp-ttf2woff2": "^4.0.1",
     "gulp-uglify-es": "^3.0.0",
     "gulp-webp": "^4.0.1",
-    "sass": "^1.66.1",
-    "yargs": "^17.7.2"
+    "sass": "^1.66.1"
   }
 }

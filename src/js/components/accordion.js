@@ -1,3 +1,4 @@
+// аккордеон
 const accordion = () => {
   const accordions = document.querySelectorAll('.accordion-js');
 

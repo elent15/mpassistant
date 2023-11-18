@@ -1,3 +1,4 @@
+// кнопка "Читать полностью"
 const read = () => {
   const readBtn = document.querySelectorAll('.reviews__btn--active');
 
